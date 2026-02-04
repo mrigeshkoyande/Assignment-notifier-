@@ -1,0 +1,6 @@
+.about-page{max-width:900px;margin:0 auto;background:white;padding:18px;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.05)}
+.about-header{display:flex;gap:14px;align-items:center}
+.about-header img{width:70px}
+.about-header h2{margin:0}
+.info-list{margin-top:12px}
+.info-list li{margin:8px 0;color:#34495e}

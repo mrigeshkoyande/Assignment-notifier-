@@ -1,0 +1,21 @@
+.navbar{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0.8rem 2.5rem;
+background: linear-gradient(90deg,var(--brand-green), #499f57);
+color:white;
+box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+position:sticky;top:0;z-index:20;
+}
+.brand-link{display:flex;align-items:center;text-decoration:none;color:inherit}
+.brand-logo{width:56px;height:56px;object-fit:contain;border-radius:8px;border:2px solid rgba(255,255,255,0.12);background:#fff;padding:4px}
+.brand-text{margin-left:12px}
+.college-name{font-weight:600;font-size:1rem}
+.college-tag{font-size:0.8rem;opacity:0.9}
+
+
+.nav-links{display:flex;gap:1.25rem}
+.nav-links a{color:white;text-decoration:none;padding:8px 12px;border-radius:8px;transition:all .18s ease}
+.nav-links a:hover{background:rgba(255,255,255,0.08)}
+.nav-links .active{background:rgba(0,0,0,0.12)}
