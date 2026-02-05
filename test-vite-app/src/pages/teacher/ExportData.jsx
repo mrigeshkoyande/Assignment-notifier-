@@ -1,3 +1,8 @@
+/**
+ * ExportData Component
+ * Allows teachers to export attendance and assignment data to Excel
+ */
+
 import { useState, useEffect } from "react";
 import { db } from "../../services/firebase.config";
 import { collection, query, where, getDocs } from "firebase/firestore";
@@ -5,6 +10,10 @@ import * as XLSX from "xlsx";
 import { FaFileExcel, FaDownload, FaCalendar } from "react-icons/fa";
 import "./ExportData.css";
 
+/**
+ * ExportData Component
+ * Provides data export functionality for teachers
+ */
 function ExportData() {
     const [attendanceData, setAttendanceData] = useState([]);
     const [loading, setLoading] = useState(false);
