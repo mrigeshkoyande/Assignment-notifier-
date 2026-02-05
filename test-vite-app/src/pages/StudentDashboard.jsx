@@ -1,3 +1,8 @@
+/**
+ * Student Dashboard Component
+ * Main dashboard for students to access attendance, assignments, and chat
+ */
+
 import { useAuth } from "../context/AuthContext";
 import { useNavigate, Routes, Route } from "react-router-dom";
 import { FaCalendarCheck, FaComments, FaFileAlt, FaSignOutAlt } from "react-icons/fa";
@@ -6,6 +11,10 @@ import Assignments from "./student/Assignments";
 import Chat from "./student/Chat";
 import "./StudentDashboard.css";
 
+/**
+ * StudentDashboard Component
+ * Provides navigation and routing for student features
+ */
 function StudentDashboard() {
     const { currentUser, logout } = useAuth();
     const navigate = useNavigate();
