@@ -1,3 +1,8 @@
+/**
+ * Main Application Component
+ * Handles routing and authentication for the College Management System
+ */
+
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import Login from "./pages/Login";
@@ -7,6 +12,13 @@ import TeacherDashboard from "./pages/TeacherDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import "./App.css";
 
+/**
+ * Protected Route Component
+ * Ensures only authenticated users with the correct role can access specific routes
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - Child components to render
+ * @param {string} props.allowedRole - The role required to access this route
+ */
 function ProtectedRoute({ children, allowedRole }) {
   const { currentUser, userRole } = useAuth();
 
