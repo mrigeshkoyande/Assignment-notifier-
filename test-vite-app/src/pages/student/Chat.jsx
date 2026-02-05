@@ -1,3 +1,8 @@
+/**
+ * Chat Component
+ * Real-time messaging between students and teachers/mentors
+ */
+
 import { useState, useEffect, useRef } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { db } from "../../services/firebase.config";
@@ -14,6 +19,10 @@ import {
 import { FaPaperPlane, FaUser } from "react-icons/fa";
 import "./Chat.css";
 
+/**
+ * Chat Component
+ * Implements real-time chat functionality with Firestore
+ */
 function Chat() {
     const { currentUser, userRole } = useAuth();
     const [messages, setMessages] = useState([]);
