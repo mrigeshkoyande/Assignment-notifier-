@@ -1,3 +1,8 @@
+/**
+ * Global Styles
+ * Base styles and CSS variables for the entire application
+ */
+
 :root {
   /* Premium Color Palette */
   --primary-color: #6366f1;
