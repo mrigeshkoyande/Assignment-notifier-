@@ -1,8 +1,17 @@
+/**
+ * Admin Dashboard Component
+ * Main dashboard for administrators to manage the entire system
+ */
+
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { FaUsersCog, FaChartLine, FaCog, FaSignOutAlt } from "react-icons/fa";
 import "./AdminDashboard.css";
 
+/**
+ * AdminDashboard Component
+ * Provides administrative controls and system overview
+ */
 function AdminDashboard() {
     const { currentUser, logout } = useAuth();
     const navigate = useNavigate();
