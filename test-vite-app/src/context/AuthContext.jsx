@@ -1,3 +1,8 @@
+/**
+ * Authentication Context
+ * Manages user authentication state and provides auth methods throughout the app
+ */
+
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth, googleProvider, db } from "../services/firebase.config";
 import { signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
@@ -5,10 +10,20 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 
 const AuthContext = createContext();
 
+/**
+ * Custom hook to access authentication context
+ * @returns {Object} Authentication context value
+ */
 export function useAuth() {
     return useContext(AuthContext);
 }
 
+/**
+ * Authentication Provider Component
+ * Wraps the app and provides authentication state and methods
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - Child components
+ */
 export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null);
     const [userRole, setUserRole] = useState(null);

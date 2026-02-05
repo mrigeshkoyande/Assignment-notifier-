@@ -1,8 +1,17 @@
+/**
+ * Login Page Component
+ * Provides Google OAuth authentication for users
+ */
+
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import "./Login.css";
 
+/**
+ * Login Component
+ * Displays login interface with Google Sign-In
+ */
 function Login() {
     const { loginWithGoogle } = useAuth();
     const navigate = useNavigate();

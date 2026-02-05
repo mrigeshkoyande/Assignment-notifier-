@@ -1,9 +1,18 @@
+/**
+ * Role Selection Component
+ * Allows new users to choose their role (Student, Teacher, or Admin)
+ */
+
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { FaUserGraduate, FaChalkboardTeacher, FaUserShield } from "react-icons/fa";
 import "./RoleSelect.css";
 
+/**
+ * RoleSelect Component
+ * Displays role options and handles role assignment
+ */
 function RoleSelect() {
     const { currentUser, assignRole } = useAuth();
     const navigate = useNavigate();
