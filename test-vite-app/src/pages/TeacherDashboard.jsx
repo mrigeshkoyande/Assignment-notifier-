@@ -1,3 +1,8 @@
+/**
+ * Teacher Dashboard Component
+ * Main dashboard for teachers to manage classes, view analytics, and communicate with students
+ */
+
 import { useAuth } from "../context/AuthContext";
 import { useNavigate, Routes, Route } from "react-router-dom";
 import { FaChartPie, FaUsers, FaFileExcel, FaComments, FaSignOutAlt } from "react-icons/fa";
@@ -6,6 +11,10 @@ import ExportData from "./teacher/ExportData";
 import Chat from "./student/Chat"; // Reuse chat component
 import "./TeacherDashboard.css";
 
+/**
+ * TeacherDashboard Component
+ * Provides navigation and routing for teacher features
+ */
 function TeacherDashboard() {
     const { currentUser, logout } = useAuth();
     const navigate = useNavigate();
