@@ -1,3 +1,8 @@
+/**
+ * Firebase Configuration
+ * Initializes and exports Firebase services for the application
+ */
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
