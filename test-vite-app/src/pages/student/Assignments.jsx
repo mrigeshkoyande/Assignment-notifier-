@@ -1,3 +1,8 @@
+/**
+ * Assignments Component
+ * Displays and manages student assignments
+ */
+
 import { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { db } from "../../services/firebase.config";
@@ -5,6 +10,10 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { FaBook, FaCalendar, FaClock, FaCloudDownloadAlt } from "react-icons/fa";
 import "./Assignments.css";
 
+/**
+ * Assignments Component
+ * Shows assignment list with details and download options
+ */
 function Assignments() {
     const { currentUser } = useAuth();
     const [assignments, setAssignments] = useState([]);
