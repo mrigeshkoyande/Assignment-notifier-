@@ -1,3 +1,8 @@
+/**
+ * Analytics Component
+ * Displays class performance metrics and attendance statistics for teachers
+ */
+
 import { useState, useEffect } from "react";
 import { Pie, Bar } from "react-chartjs-2";
 import {
@@ -23,6 +28,10 @@ ChartJS.register(
     Legend
 );
 
+/**
+ * Analytics Component
+ * Visualizes student performance and attendance data using charts
+ */
 function Analytics() {
     const [attendanceData, setAttendanceData] = useState(null);
     const [performanceData, setPerformanceData] = useState(null);
