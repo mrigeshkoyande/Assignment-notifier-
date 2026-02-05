@@ -1,3 +1,8 @@
+/**
+ * Attendance Component
+ * Allows students to mark attendance using face detection and GPS verification
+ */
+
 import { useState, useRef, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { db } from "../../services/firebase.config";
@@ -6,6 +11,10 @@ import * as faceapi from "face-api.js";
 import { FaCamera, FaMapMarkerAlt, FaCheckCircle } from "react-icons/fa";
 import "./Attendance.css";
 
+/**
+ * Attendance Component
+ * Implements biometric verification for attendance marking
+ */
 function Attendance() {
     const { currentUser } = useAuth();
     const videoRef = useRef(null);
