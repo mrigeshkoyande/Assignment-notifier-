@@ -4,8 +4,10 @@
  */
 
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Routes, Route } from "react-router-dom";
 import { FaUsersCog, FaChartLine, FaCog, FaSignOutAlt } from "react-icons/fa";
+import UserManagement from "./admin/UserManagement";
+import UserDetails from "./admin/UserDetails";
 import "./AdminDashboard.css";
 
 /**
@@ -58,26 +60,36 @@ function AdminDashboard() {
             </aside>
 
             <main className="dashboard-main">
-                <div className="welcome-section glass-panel">
-                    <h1>Welcome, {currentUser?.displayName?.split(" ")[0]}! 🛡️</h1>
-                    <p>Oversee the entire system and manage users</p>
-                </div>
-
-                <div className="dashboard-grid">
-                    {menuItems.map((item) => {
-                        const Icon = item.icon;
-                        return (
-                            <div
-                                key={item.id}
-                                className="dashboard-card glass-panel"
-                                onClick={() => navigate(item.path)}
-                            >
-                                <Icon className="card-icon" size={48} />
-                                <h3>{item.name}</h3>
+                <Routes>
+                    <Route path="/" element={
+                        <>
+                            <div className="welcome-section glass-panel">
+                                <h1>Welcome, {currentUser?.displayName?.split(" ")[0]}! 🛡️</h1>
+                                <p>Oversee the entire system and manage users</p>
                             </div>
-                        );
-                    })}
-                </div>
+
+                            <div className="dashboard-grid">
+                                {menuItems.map((item) => {
+                                    const Icon = item.icon;
+                                    return (
+                                        <div
+                                            key={item.id}
+                                            className="dashboard-card glass-panel"
+                                            onClick={() => navigate(item.path)}
+                                        >
+                                            <Icon className="card-icon" size={48} />
+                                            <h3>{item.name}</h3>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </>
+                    } />
+                    <Route path="users" element={<UserManagement />} />
+                    <Route path="users/:userId" element={<UserDetails />} />
+                    <Route path="overview" element={<div className="glass-panel" style={{ padding: '2rem' }}><h2>System Overview</h2><p>System stats coming soon...</p></div>} />
+                    <Route path="settings" element={<div className="glass-panel" style={{ padding: '2rem' }}><h2>Settings</h2><p>System settings coming soon...</p></div>} />
+                </Routes>
             </main>
         </div>
     );
