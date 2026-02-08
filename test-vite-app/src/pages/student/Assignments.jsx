@@ -14,10 +14,15 @@ import "./Assignments.css";
  * Assignments Component
  * Shows assignment list with details and download options
  */
+export default Assignments;
+
 function Assignments() {
     const { currentUser } = useAuth();
     const [assignments, setAssignments] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [cameraActive, setCameraActive] = useState(false);
+    const [capturedImage, setCapturedImage] = useState(null);
+    const [cameraStatus, setCameraStatus] = useState("");
 
     useEffect(() => {
         fetchAssignments();
@@ -46,6 +51,35 @@ function Assignments() {
         // This would integrate with Google Drive API
         // For now, we'll show a placeholder
         alert(`Save to Drive feature coming soon!\n\nAssignment: ${assignment.title}`);
+    };
+
+    const toggleCamera = () => {
+        setCameraActive(!cameraActive);
+        setCapturedImage(null);
+        setCameraStatus("");
+    };
+
+    const captureImage = async () => {
+        try {
+            setCameraStatus("Capturing...");
+            const response = await fetch('http://localhost:5000/capture');
+            const data = await response.json();
+
+            if (data.status === 'success') {
+                setCameraStatus("Image captured successfully!");
+                // In a real app we would get the image data/url here
+                // For this demo we'll just show a success state and stop the camera
+                setTimeout(() => {
+                    setCameraActive(false);
+                    setCameraStatus("");
+                }, 2000);
+            } else {
+                setCameraStatus("Failed to capture: " + data.message);
+            }
+        } catch (error) {
+            console.error("Error capturing image:", error);
+            setCameraStatus("Error: Ensure Python backend is running");
+        }
     };
 
     // Demo data if no assignments in Firestore
@@ -106,7 +140,66 @@ function Assignments() {
             <div className="assignments-header">
                 <h1>My Assignments</h1>
                 <p>Track and manage your coursework</p>
+                <button
+                    className="btn-primary"
+                    onClick={toggleCamera}
+                    style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                >
+                    <FaClock /> {cameraActive ? "Close Scammer" : "Scan Assignment"}
+                </button>
             </div>
+
+            {cameraActive && (
+                <div className="camera-section glass-panel" style={{ marginBottom: '2rem', textAlign: 'center' }}>
+                    <h3>Scan Assignment</h3>
+                    <div className="camera-feed" style={{
+                        width: '100%',
+                        maxWidth: '640px',
+                        height: '480px',
+                        margin: '1rem auto',
+                        backgroundColor: '#000',
+                        borderRadius: '8px',
+                        overflow: 'hidden',
+                        position: 'relative'
+                    }}>
+                        <img
+                            src="http://localhost:5000/video_feed"
+                            alt="Camera Feed"
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                            onError={(e) => {
+                                e.target.style.display = 'none';
+                                e.target.nextSibling.style.display = 'flex';
+                            }}
+                        />
+                        <div style={{
+                            display: 'none',
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: 'white',
+                            flexDirection: 'column'
+                        }}>
+                            <p>Camera stream unavailable.</p>
+                            <p style={{ fontSize: '0.8rem', opacity: 0.8 }}>Is the Python backend running?</p>
+                        </div>
+                    </div>
+
+                    <div className="camera-controls">
+                        <button
+                            className="btn-primary"
+                            onClick={captureImage}
+                            disabled={cameraStatus === "Capturing..."}
+                        >
+                            {cameraStatus === "Capturing..." ? "Capturing..." : "Capture Image"}
+                        </button>
+                    </div>
+                    {cameraStatus && <p style={{ marginTop: '1rem', color: cameraStatus.includes('Error') || cameraStatus.includes('Failed') ? '#ef4444' : '#10b981' }}>{cameraStatus}</p>}
+                </div>
+            )}
 
             <div className="assignments-grid">
                 {displayAssignments.map((assignment) => {
@@ -159,5 +252,3 @@ function Assignments() {
         </div>
     );
 }
-
-export default Assignments;
