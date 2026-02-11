@@ -67,12 +67,7 @@ function Assignments() {
 
             if (data.status === 'success') {
                 setCameraStatus("Image captured successfully!");
-                // In a real app we would get the image data/url here
-                // For this demo we'll just show a success state and stop the camera
-                setTimeout(() => {
-                    setCameraActive(false);
-                    setCameraStatus("");
-                }, 2000);
+                setCapturedImage(data.image_url);
             } else {
                 setCameraStatus("Failed to capture: " + data.message);
             }
@@ -152,52 +147,96 @@ function Assignments() {
             {cameraActive && (
                 <div className="camera-section glass-panel" style={{ marginBottom: '2rem', textAlign: 'center' }}>
                     <h3>Scan Assignment</h3>
-                    <div className="camera-feed" style={{
-                        width: '100%',
-                        maxWidth: '640px',
-                        height: '480px',
-                        margin: '1rem auto',
-                        backgroundColor: '#000',
-                        borderRadius: '8px',
-                        overflow: 'hidden',
-                        position: 'relative'
-                    }}>
-                        <img
-                            src="http://localhost:5000/video_feed"
-                            alt="Camera Feed"
-                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                            onError={(e) => {
-                                e.target.style.display = 'none';
-                                e.target.nextSibling.style.display = 'flex';
-                            }}
-                        />
-                        <div style={{
-                            display: 'none',
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '100%',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            color: 'white',
-                            flexDirection: 'column'
-                        }}>
-                            <p>Camera stream unavailable.</p>
-                            <p style={{ fontSize: '0.8rem', opacity: 0.8 }}>Is the Python backend running?</p>
-                        </div>
-                    </div>
 
-                    <div className="camera-controls">
-                        <button
-                            className="btn-primary"
-                            onClick={captureImage}
-                            disabled={cameraStatus === "Capturing..."}
-                        >
-                            {cameraStatus === "Capturing..." ? "Capturing..." : "Capture Image"}
-                        </button>
-                    </div>
-                    {cameraStatus && <p style={{ marginTop: '1rem', color: cameraStatus.includes('Error') || cameraStatus.includes('Failed') ? '#ef4444' : '#10b981' }}>{cameraStatus}</p>}
+                    {capturedImage ? (
+                        <div className="captured-preview">
+                            <div className="image-container" style={{
+                                width: '100%',
+                                maxWidth: '640px',
+                                margin: '1rem auto',
+                                borderRadius: '8px',
+                                overflow: 'hidden',
+                                border: '2px solid #10b981'
+                            }}>
+                                <img
+                                    src={capturedImage}
+                                    alt="Captured Assignment"
+                                    style={{ width: '100%', display: 'block' }}
+                                />
+                            </div>
+                            <div className="camera-controls" style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+                                <button
+                                    className="btn-primary"
+                                    onClick={() => {
+                                        setCapturedImage(null);
+                                        setCameraStatus("");
+                                    }}
+                                    style={{ backgroundColor: '#6b7280' }}
+                                >
+                                    Retake
+                                </button>
+                                <button
+                                    className="btn-primary"
+                                    onClick={() => {
+                                        alert("Image saved successfully!");
+                                        toggleCamera();
+                                    }}
+                                >
+                                    Save & Close
+                                </button>
+                            </div>
+                            <p style={{ marginTop: '0.5rem', color: '#10b981' }}>Image captured successfully!</p>
+                        </div>
+                    ) : (
+                        <>
+                            <div className="camera-feed" style={{
+                                width: '100%',
+                                maxWidth: '640px',
+                                height: '480px',
+                                margin: '1rem auto',
+                                backgroundColor: '#000',
+                                borderRadius: '8px',
+                                overflow: 'hidden',
+                                position: 'relative'
+                            }}>
+                                <img
+                                    src="http://localhost:5000/video_feed"
+                                    alt="Camera Feed"
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                    onError={(e) => {
+                                        e.target.style.display = 'none';
+                                        e.target.nextSibling.style.display = 'flex';
+                                    }}
+                                />
+                                <div style={{
+                                    display: 'none',
+                                    position: 'absolute',
+                                    top: 0,
+                                    left: 0,
+                                    width: '100%',
+                                    height: '100%',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    color: 'white',
+                                    flexDirection: 'column'
+                                }}>
+                                    <p>Camera stream unavailable.</p>
+                                    <p style={{ fontSize: '0.8rem', opacity: 0.8 }}>Is the Python backend running?</p>
+                                </div>
+                            </div>
+
+                            <div className="camera-controls">
+                                <button
+                                    className="btn-primary"
+                                    onClick={captureImage}
+                                    disabled={cameraStatus === "Capturing..."}
+                                >
+                                    {cameraStatus === "Capturing..." ? "Capturing..." : "Capture Image"}
+                                </button>
+                            </div>
+                            {cameraStatus && <p style={{ marginTop: '1rem', color: cameraStatus.includes('Error') || cameraStatus.includes('Failed') ? '#ef4444' : '#10b981' }}>{cameraStatus}</p>}
+                        </>
+                    )}
                 </div>
             )}
 
