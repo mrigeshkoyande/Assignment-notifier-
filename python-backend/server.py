@@ -1,7 +1,9 @@
 import cv2
 import os
 import time
-from flask import Flask, Response, jsonify, send_from_directory
+import json
+from datetime import datetime, timedelta
+from flask import Flask, Response, jsonify, send_from_directory, request
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -11,6 +13,11 @@ CORS(app)  # Enable CORS for all routes
 CAPTURE_DIR = os.path.join(os.path.dirname(__file__), 'captured_images')
 if not os.path.exists(CAPTURE_DIR):
     os.makedirs(CAPTURE_DIR)
+
+# Directory for attendance data
+ATTENDANCE_DIR = os.path.join(os.path.dirname(__file__), 'attendance_records')
+if not os.path.exists(ATTENDANCE_DIR):
+    os.makedirs(ATTENDANCE_DIR)
 
 camera = cv2.VideoCapture(0)
 
@@ -52,6 +59,166 @@ def capture():
 @app.route('/captured/<filename>')
 def uploaded_file(filename):
     return send_from_directory(CAPTURE_DIR, filename)
+
+# Attendance Management Endpoints
+
+@app.route('/api/attendance/save', methods=['POST'])
+def save_attendance():
+    """
+    Save attendance record for a user
+    Expects JSON: {
+        "userId": "user_id",
+        "userName": "user_name",
+        "email": "user_email",
+        "timestamp": "2024-02-13T10:30:00",
+        "location": {"latitude": 28.6139, "longitude": 77.2090},
+        "verified": true,
+        "image": "filename"
+    }
+    """
+    try:
+        data = request.get_json()
+        
+        if not data.get('userId'):
+            return jsonify({"error": "userId is required"}), 400
+        
+        user_id = data['userId']
+        user_dir = os.path.join(ATTENDANCE_DIR, user_id)
+        
+        if not os.path.exists(user_dir):
+            os.makedirs(user_dir)
+        
+        # Create attendance record with timestamp as filename
+        timestamp = int(time.time())
+        record_filename = f"attendance_{timestamp}.json"
+        record_path = os.path.join(user_dir, record_filename)
+        
+        record_data = {
+            "userId": user_id,
+            "userName": data.get("userName", ""),
+            "email": data.get("email", ""),
+            "timestamp": datetime.now().isoformat(),
+            "location": data.get("location", {}),
+            "verified": data.get("verified", True),
+            "image": data.get("image", "")
+        }
+        
+        with open(record_path, 'w') as f:
+            json.dump(record_data, f, indent=2)
+        
+        return jsonify({
+            "status": "success",
+            "message": "Attendance record saved",
+            "record_id": timestamp
+        }), 201
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/attendance/<user_id>', methods=['GET'])
+def get_user_attendance(user_id):
+    """
+    Get all attendance records for a specific user
+    Optional query params:
+    - month: YYYY-MM (e.g., 2024-02)
+    - limit: number of records to return
+    """
+    try:
+        user_dir = os.path.join(ATTENDANCE_DIR, user_id)
+        
+        if not os.path.exists(user_dir):
+            return jsonify({"status": "success", "records": []}), 200
+        
+        records = []
+        
+        for filename in os.listdir(user_dir):
+            if filename.endswith('.json'):
+                filepath = os.path.join(user_dir, filename)
+                
+                try:
+                    with open(filepath, 'r') as f:
+                        record = json.load(f)
+                        records.append(record)
+                except:
+                    continue
+        
+        # Sort by timestamp (newest first)
+        records.sort(key=lambda x: x.get('timestamp', ''), reverse=True)
+        
+        # Apply limit if specified
+        limit = request.args.get('limit', type=int)
+        if limit:
+            records = records[:limit]
+        
+        return jsonify({
+            "status": "success",
+            "user_id": user_id,
+            "total_records": len(records),
+            "records": records
+        }), 200
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/attendance/<user_id>/stats', methods=['GET'])
+def get_attendance_stats(user_id):
+    """
+    Get attendance statistics for a user
+    Optional query params:
+    - days: number of days to look back (default: 30)
+    """
+    try:
+        user_dir = os.path.join(ATTENDANCE_DIR, user_id)
+        days = request.args.get('days', default=30, type=int)
+        
+        if not os.path.exists(user_dir):
+            return jsonify({
+                "status": "success",
+                "user_id": user_id,
+                "total_days_marked": 0,
+                "attendance_percentage": 0.0,
+                "records": []
+            }), 200
+        
+        records = []
+        cutoff_date = datetime.now() - timedelta(days=days)
+        
+        for filename in os.listdir(user_dir):
+            if filename.endswith('.json'):
+                filepath = os.path.join(user_dir, filename)
+                
+                try:
+                    with open(filepath, 'r') as f:
+                        record = json.load(f)
+                        record_date = datetime.fromisoformat(record.get('timestamp', ''))
+                        
+                        if record_date >= cutoff_date:
+                            records.append(record)
+                except:
+                    continue
+        
+        # Calculate unique dates marked
+        unique_dates = set()
+        for record in records:
+            try:
+                date_str = record['timestamp'].split('T')[0]
+                unique_dates.add(date_str)
+            except:
+                pass
+        
+        attendance_percentage = (len(unique_dates) / days * 100) if days > 0 else 0
+        
+        return jsonify({
+            "status": "success",
+            "user_id": user_id,
+            "period_days": days,
+            "total_days_marked": len(unique_dates),
+            "attendance_percentage": round(attendance_percentage, 2),
+            "last_record": records[0] if records else None
+        }), 200
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
