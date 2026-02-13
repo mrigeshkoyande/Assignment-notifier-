@@ -5,7 +5,8 @@
 
 import { useAuth } from "../context/AuthContext";
 import { useNavigate, Routes, Route } from "react-router-dom";
-import { FaCalendarCheck, FaComments, FaFileAlt, FaSignOutAlt } from "react-icons/fa";
+import { FaCalendarCheck, FaComments, FaFileAlt, FaSignOutAlt, FaChartLine } from "react-icons/fa";
+import useAttendance from "../hooks/useAttendance";
 import Attendance from "./student/Attendance";
 import Assignments from "./student/Assignments";
 import Chat from "./student/Chat";
@@ -18,6 +19,7 @@ import "./StudentDashboard.css";
 function StudentDashboard() {
     const { currentUser, logout } = useAuth();
     const navigate = useNavigate();
+    const { stats, isLoading: attendanceLoading } = useAttendance(currentUser?.uid);
 
     const handleLogout = async () => {
         await logout();
@@ -68,6 +70,36 @@ function StudentDashboard() {
                                 <h1>Welcome back, {currentUser?.displayName?.split(" ")[0]}! 👋</h1>
                                 <p>Your learning hub for assignments, attendance, and mentorship</p>
                             </div>
+
+                            {/* Attendance Statistics Card */}
+                            {!attendanceLoading && (
+                                <div className="stats-container">
+                                    <div className="stat-card glass-panel attendance-stat">
+                                        <div className="stat-icon">
+                                            <FaChartLine size={32} />
+                                        </div>
+                                        <div className="stat-content">
+                                            <h3>Attendance Overview</h3>
+                                            <div className="stat-values">
+                                                <div className="stat-value">
+                                                    <span className="value">{stats.totalDaysMarked}</span>
+                                                    <span className="label">Days Present</span>
+                                                </div>
+                                                <div className="stat-value">
+                                                    <span className="value">{stats.attendancePercentage}%</span>
+                                                    <span className="label">Attendance</span>
+                                                </div>
+                                            </div>
+                                            <button 
+                                                className="btn-view-details"
+                                                onClick={() => navigate("/student-dashboard/attendance")}
+                                            >
+                                                View Calendar →
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
 
                             <div className="dashboard-grid">
                                 {menuItems.map((item) => {
