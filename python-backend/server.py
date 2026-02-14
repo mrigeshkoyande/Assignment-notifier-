@@ -73,10 +73,13 @@ def save_attendance():
         "timestamp": "2024-02-13T10:30:00",
         "location": {"latitude": 28.6139, "longitude": 77.2090},
         "verified": true,
-        "image": "filename"
+        "imageData": "data:image/jpeg;base64,..."
     }
     """
     try:
+        import base64
+        from flask import request
+        
         data = request.get_json()
         
         if not data.get('userId'):
@@ -88,6 +91,28 @@ def save_attendance():
         if not os.path.exists(user_dir):
             os.makedirs(user_dir)
         
+        # Handle image data if provided
+        image_filename = None
+        if data.get('imageData'):
+            try:
+                # Extract base64 data from data URL
+                image_data = data['imageData']
+                if ',' in image_data:
+                    image_data = image_data.split(',')[1]
+                
+                # Decode and save image
+                image_bytes = base64.b64decode(image_data)
+                timestamp = int(time.time())
+                image_filename = f"attendance_{timestamp}.jpg"
+                image_path = os.path.join(user_dir, image_filename)
+                
+                with open(image_path, 'wb') as f:
+                    f.write(image_bytes)
+                    
+            except Exception as e:
+                print(f"Error saving image: {e}")
+                image_filename = None
+        
         # Create attendance record with timestamp as filename
         timestamp = int(time.time())
         record_filename = f"attendance_{timestamp}.json"
@@ -98,6 +123,25 @@ def save_attendance():
             "userName": data.get("userName", ""),
             "email": data.get("email", ""),
             "timestamp": datetime.now().isoformat(),
+            "location": data.get("location", {}),
+            "verified": data.get("verified", True),
+            "image": image_filename
+        }
+        
+        with open(record_path, 'w') as f:
+            json.dump(record_data, f, indent=2)
+        
+        return jsonify({
+            "status": "success",
+            "message": "Attendance record saved",
+            "record_id": timestamp,
+            "image_filename": image_filename
+        }), 201
+    
+    except Exception as e:
+        import traceback
+        print(f"Error: {traceback.format_exc()}")
+        return jsonify({"error": str(e)}), 500
             "location": data.get("location", {}),
             "verified": data.get("verified", True),
             "image": data.get("image", "")
