@@ -51,7 +51,7 @@ Dashbord :
 <div align="center"> <img src="https://github.com/user-attachments/assets/5bf0f4d0-18dc-41ca-931b-5d50b5211d0f" width="700" /> 
 <hr>
 About
-<img src="https://github.com/user-attachments/assets/dc6689a3-bee7-483e-958a-c0b0183c5c89" width="700" /> <img src="https://github.com/user-attachments/assets/8683459b-1305-42ee-8c7b-aa250993fbf3" width="700" /> <img src="https://github.com/user-attachments/assets/673b45f8-a1c1-4fe3-98c5-5d6207227470" width="700" /> <img src="https://github.com/user-attachments/assets/e299d27e-3e36-4d47-ac84-bd51dc7ad95b" width="700" /> <img src="https://github.com/user-attachments/assets/a9c75b68-d590-4dc0-8e88-16efe647ed81" width="700" /> <img src="https://github.com/user-attachments/assets/3843507a-24ae-4404-92e5-1d1e79563ccf" width="700" /> <img src="https://github.com/user-attachments/assets/639f1337-e7bb-41d2-a6a5-0c13350c0fda" width="700" /> 
+ 
   <hr>
   Doubt portal
   <img src="https://github.com/user-attachments/assets/0f3fcc1c-bb63-4999-abf9-30366063dc8e" width="700" /> </div>
