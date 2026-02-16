@@ -295,7 +295,17 @@ VITE_FIREBASE_APP_ID=your_app_id
 <img width="1919" height="910" alt="image" src="https://github.com/user-attachments/assets/9f146287-0703-4b15-8ef6-bd9b0e0df7b5" />
 ### New Assignment
 <img width="1919" height="913" alt="Screenshot 2026-02-16 214245" src="https://github.com/user-attachments/assets/fc120264-0ff9-4b63-ac5a-49ef5c1d002e" />
+### Mentoer chat 
+<img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/186058a4-36e8-4920-a5bf-9d37f7ebb721" />
 
+### Teacher portal Class analysis 
+<img width="1919" height="911" alt="image" src="https://github.com/user-attachments/assets/5094338a-d170-48c7-88cc-471cbf7a95ba" />
+### Teacher - student attendence system 
+<img width="1919" height="913" alt="image" src="https://github.com/user-attachments/assets/1638d179-7701-4535-9429-1dfac3cc5978" />
+### Teacher student chat portal 
+<img width="1919" height="906" alt="image" src="https://github.com/user-attachments/assets/83409bd8-44df-4cf6-baf6-4737a903769c" />
+### Teacher Attendence marking system 
+<img width="1596" height="733" alt="image" src="https://github.com/user-attachments/assets/b88cf3e4-d9f2-4a6c-aa35-d69923179ea0" />
 
 
 </div>
