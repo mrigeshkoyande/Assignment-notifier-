@@ -44,18 +44,7 @@ Custom reminders to help manage deadlines efficiently.
 
 Role-based access control (Admin, Teacher, Student).
 
-<hr>
-📸 Screenshots <br>
-<hr>
-Dashbord : 
-<div align="center"> <img src="https://github.com/user-attachments/assets/5bf0f4d0-18dc-41ca-931b-5d50b5211d0f" width="700" /> 
-<hr>
-About
- 
-  <hr>
-  Doubt portal
-  <img src="https://github.com/user-attachments/assets/0f3fcc1c-bb63-4999-abf9-30366063dc8e" width="700" /> </div>
-  <hr>
+
 
 📌 Usage
 
