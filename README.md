@@ -280,32 +280,23 @@ VITE_FIREBASE_APP_ID=your_app_id
 
 <div align="center">
 
-### Dashboard
-<img src="https://github.com/user-attachments/assets/5bf0f4d0-18dc-41ca-931b-5d50b5211d0f" width="700" alt="Dashboard" />
+### Admin Dashboard
+<img width="1919" height="869" alt="Screenshot 2026-02-16 213534" src="https://github.com/user-attachments/assets/da228c0d-0ea8-41e6-a36b-78b7199f2990" />
+### Student Dashboard
+<img width="1919" height="914" alt="image" src="https://github.com/user-attachments/assets/6ec3b5b2-bc54-4bcc-b9fd-2b652c7b91b0" />
+### Teacher Dashboard
+<img width="1919" height="911" alt="image" src="https://github.com/user-attachments/assets/0650c978-7886-4ac0-a9c4-e5925b63d84f" />
 
-### About Page
-<img src="https://github.com/user-attachments/assets/dc6689a3-bee7-483e-958a-c0b0183c5c89" width="700" alt="About Page" />
+### Admin pannel
+<img width="1919" height="861" alt="image" src="https://github.com/user-attachments/assets/7498c711-711b-494a-9fab-9c54c6ebe5e0" />
 
-### Assignment View
-<img src="https://github.com/user-attachments/assets/8683459b-1305-42ee-8c7b-aa250993fbf3" width="700" alt="Assignment View" />
 
-### Subject Page
-<img src="https://github.com/user-attachments/assets/673b45f8-a1c1-4fe3-98c5-5d6207227470" width="700" alt="Subject Page" />
-
+### Student Attendence 
+<img width="1919" height="910" alt="image" src="https://github.com/user-attachments/assets/9f146287-0703-4b15-8ef6-bd9b0e0df7b5" />
 ### New Assignment
-<img src="https://github.com/user-attachments/assets/e299d27e-3e36-4d47-ac84-bd51dc7ad95b" width="700" alt="New Assignment" />
+<img width="1919" height="913" alt="Screenshot 2026-02-16 214245" src="https://github.com/user-attachments/assets/fc120264-0ff9-4b63-ac5a-49ef5c1d002e" />
 
-### User Interface
-<img src="https://github.com/user-attachments/assets/a9c75b68-d590-4dc0-8e88-16efe647ed81" width="700" alt="User Interface" />
 
-### Features Overview
-<img src="https://github.com/user-attachments/assets/3843507a-24ae-4404-92e5-1d1e79563ccf" width="700" alt="Features" />
-
-### Navigation
-<img src="https://github.com/user-attachments/assets/639f1337-e7bb-41d2-a6a5-0c13350c0fda" width="700" alt="Navigation" />
-
-### Doubt Portal
-<img src="https://github.com/user-attachments/assets/0f3fcc1c-bb63-4999-abf9-30366063dc8e" width="700" alt="Doubt Portal" />
 
 </div>
 
