@@ -142,22 +142,6 @@ def save_attendance():
         import traceback
         print(f"Error: {traceback.format_exc()}")
         return jsonify({"error": str(e)}), 500
-            "location": data.get("location", {}),
-            "verified": data.get("verified", True),
-            "image": data.get("image", "")
-        }
-        
-        with open(record_path, 'w') as f:
-            json.dump(record_data, f, indent=2)
-        
-        return jsonify({
-            "status": "success",
-            "message": "Attendance record saved",
-            "record_id": timestamp
-        }), 201
-    
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
 
 @app.route('/api/attendance/<user_id>', methods=['GET'])
 def get_user_attendance(user_id):
