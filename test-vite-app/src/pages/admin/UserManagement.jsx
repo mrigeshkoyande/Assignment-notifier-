@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { db } from "../../services/firebase.config";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { FaSearch, FaFilter } from "react-icons/fa";
+import { FaSearch, FaFilter, FaUserPlus } from "react-icons/fa";
 import "./UserManagement.css";
 
 function UserManagement() {
@@ -38,6 +38,9 @@ function UserManagement() {
     };
 
     const filteredUsers = users.filter(user => {
+        // Filter out deleted users by default
+        if (user.accountStatus === "deleted") return false;
+
         const matchesFilter = filter === "all" || user.role === filter;
         const matchesSearch = user.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
             user.email?.toLowerCase().includes(searchTerm.toLowerCase());
@@ -48,11 +51,28 @@ function UserManagement() {
         return name ? name.charAt(0).toUpperCase() : "?";
     };
 
+    const getStatusBadge = (status) => {
+        const colors = {
+            active: "#22c55e",
+            paused: "#eab308",
+            deleted: "#ef4444"
+        };
+        return status || "active";
+    };
+
     return (
         <div className="user-management-container">
             <div className="user-management-header">
-                <h1>User Management</h1>
-                <p>View and manage all students and teachers</p>
+                <div>
+                    <h1>User Management</h1>
+                    <p>View and manage all students, teachers, and administrators</p>
+                </div>
+                <button
+                    className="btn-add-user"
+                    onClick={() => navigate("/admin-dashboard/add-user")}
+                >
+                    <FaUserPlus /> Add New User
+                </button>
             </div>
 
             <div className="glass-panel filters-bar">
@@ -83,6 +103,12 @@ function UserManagement() {
                 >
                     Teachers
                 </button>
+                <button
+                    className={`filter-btn ${filter === "admin" ? "active" : ""}`}
+                    onClick={() => setFilter("admin")}
+                >
+                    Admins
+                </button>
             </div>
 
             {loading ? (
@@ -105,8 +131,15 @@ function UserManagement() {
                                         <p>{user.email}</p>
                                     </div>
                                 </div>
-                                <div className={`user-role-badge role-${user.role}`}>
-                                    {user.role}
+                                <div className="user-meta">
+                                    <div className={`user-role-badge role-${user.role}`}>
+                                        {user.role}
+                                    </div>
+                                    {user.accountStatus && user.accountStatus !== "active" && (
+                                        <span className={`status-indicator status-${user.accountStatus}`}>
+                                            {user.accountStatus}
+                                        </span>
+                                    )}
                                 </div>
                             </div>
                         ))
