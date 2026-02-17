@@ -4,10 +4,42 @@
     overflow-y: auto;
 }
 
+.message-banner {
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    animation: slideDown 0.3s ease-out;
+}
+
+.message-banner.success {
+    background: rgba(34, 197, 94, 0.2);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #22c55e;
+}
+
+.message-banner.error {
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .back-btn {
     background: none;
     border: none;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.7);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -15,25 +47,39 @@
     margin-bottom: 2rem;
     font-size: 1rem;
     padding: 0;
+    transition: color 0.2s;
 }
 
 .back-btn:hover {
-    color: var(--primary-color);
+    color: #667eea;
 }
 
 .profile-header {
     display: flex;
+    justify-content: space-between;
     align-items: flex-start;
     gap: 2rem;
     margin-bottom: 2rem;
     padding: 2rem;
 }
 
+.profile-left {
+    display: flex;
+    gap: 2rem;
+    flex: 1;
+}
+
+.profile-photo,
 .profile-avatar {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    object-fit: cover;
+    border: 3px solid rgba(102, 126, 234, 0.5);
+}
+
+.profile-avatar {
+    background: linear-gradient(135deg, #667eea, #764ba2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,17 +88,100 @@
     font-weight: bold;
 }
 
+.profile-info {
+    flex: 1;
+}
+
+.profile-name-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
 .profile-info h1 {
-    margin: 0 0 0.5rem 0;
+    margin: 0;
     font-size: 2rem;
 }
 
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
 .profile-info p {
-    color: var(--text-secondary);
-    margin: 0.25rem 0;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0.5rem 0;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+.created-date {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 0.75rem;
+}
+
+.profile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.btn-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    white-space: nowrap;
+}
+
+.btn-pause {
+    background: rgba(234, 179, 8, 0.2);
+    color: #eab308;
+    border: 1px solid #eab308;
+}
+
+.btn-pause:hover:not(:disabled) {
+    background: #eab308;
+    color: white;
+}
+
+.btn-resume {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    border: 1px solid #22c55e;
+}
+
+.btn-resume:hover:not(:disabled) {
+    background: #22c55e;
+    color: white;
+}
+
+.btn-delete {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid #ef4444;
+}
+
+.btn-delete:hover:not(:disabled) {
+    background: #ef4444;
+    color: white;
+}
+
+.btn-action:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .detail-section {
@@ -62,7 +191,7 @@
 .detail-section h2 {
     margin-bottom: 1rem;
     font-size: 1.5rem;
-    color: var(--text-primary);
+    color: white;
 }
 
 .attendance-list {
@@ -98,13 +227,193 @@
 
 .attendance-location {
     font-size: 0.8rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.5);
     margin-left: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .empty-state {
     text-align: center;
     padding: 3rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.5);
     font-style: italic;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background: linear-gradient(135deg, rgba(30, 30, 40, 0.95), rgba(50, 50, 70, 0.95));
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content h2 {
+    color: #ef4444;
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.warning-text {
+    color: #fbbf24;
+    font-weight: 500;
+    background: rgba(251, 191, 36, 0.1);
+    padding: 0.75rem;
+    border-radius: 8px;
+    border-left: 3px solid #fbbf24;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: flex-end;
+}
+
+.btn-cancel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-cancel:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-confirm-delete {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-confirm-delete:hover:not(:disabled) {
+    background: #dc2626;
+    transform: translateY(-2px);
+}
+
+.btn-cancel:disabled,
+.btn-confirm-delete:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .profile-header {
+        flex-direction: column;
+    }
+
+    .profile-actions {
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .btn-action {
+        flex: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .user-details-container {
+        padding: 1rem;
+    }
+
+    .profile-left {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-photo,
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-info h1 {
+        font-size: 1.5rem;
+    }
+
+    .profile-name-status {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .profile-actions {
+        width: 100%;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+
+    .btn-cancel,
+    .btn-confirm-delete {
+        width: 100%;
+        justify-content: center;
+    }
 }
