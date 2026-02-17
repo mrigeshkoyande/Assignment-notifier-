@@ -5,11 +5,13 @@
 
 import { useAuth } from "../context/AuthContext";
 import { useNavigate, Routes, Route } from "react-router-dom";
-import { FaCalendarCheck, FaComments, FaFileAlt, FaSignOutAlt, FaChartLine } from "react-icons/fa";
+import { FaCalendarCheck, FaComments, FaFileAlt, FaSignOutAlt, FaChartLine, FaBook, FaCog } from "react-icons/fa";
 import useAttendance from "../hooks/useAttendance";
 import Attendance from "./student/Attendance";
 import Assignments from "./student/Assignments";
+import MyClassrooms from "./student/MyClassrooms";
 import Chat from "./student/Chat";
+import Settings from "./student/Settings";
 import "./StudentDashboard.css";
 
 /**
@@ -27,9 +29,11 @@ function StudentDashboard() {
     };
 
     const menuItems = [
+        { id: "classrooms", name: "My Classrooms", icon: FaBook, path: "/student-dashboard/classrooms" },
         { id: "attendance", name: "Mark Attendance", icon: FaCalendarCheck, path: "/student-dashboard/attendance" },
         { id: "assignments", name: "Assignments", icon: FaFileAlt, path: "/student-dashboard/assignments" },
-        { id: "chat", name: "Mentor Chat", icon: FaComments, path: "/student-dashboard/chat" }
+        { id: "chat", name: "Mentor Chat", icon: FaComments, path: "/student-dashboard/chat" },
+        { id: "settings", name: "Settings", icon: FaCog, path: "/student-dashboard/settings" }
     ];
 
     return (
@@ -90,7 +94,7 @@ function StudentDashboard() {
                                                     <span className="label">Attendance</span>
                                                 </div>
                                             </div>
-                                            <button 
+                                            <button
                                                 className="btn-view-details"
                                                 onClick={() => navigate("/student-dashboard/attendance")}
                                             >
@@ -118,9 +122,11 @@ function StudentDashboard() {
                             </div>
                         </>
                     } />
+                    <Route path="/classrooms" element={<MyClassrooms />} />
                     <Route path="/attendance" element={<Attendance />} />
                     <Route path="/assignments" element={<Assignments />} />
                     <Route path="/chat" element={<Chat />} />
+                    <Route path="/settings" element={<Settings />} />
                 </Routes>
             </main>
         </div>
