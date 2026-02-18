@@ -868,7 +868,67 @@ Every contribution matters! Thank you for taking the time to contribute and make
 
 ---
 
-## 🐛 Known Issues & Troubleshooting
+## � Contributors
+
+This project exists thanks to all the people who contribute! 🎉
+
+<div align="center">
+
+### 🌟 Hall of Fame
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<a href="https://github.com/mrigeshkoyande/Assignment-notifier-/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=mrigeshkoyande/Assignment-notifier-" />
+</a>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+</div>
+
+### 🏆 Top Contributors
+
+Want to see your name here? Start contributing today!
+
+**Contribution Categories:**
+
+- 💻 **Code** - Features, bug fixes, refactoring
+- 📖 **Documentation** - README, guides, tutorials
+- 🎨 **Design** - UI/UX, graphics, assets
+- 🐛 **Bug Reports** - Finding and reporting issues
+- 💡 **Ideas** - Feature suggestions and planning
+- 🧪 **Testing** - QA and test coverage
+- 🌍 **Translation** - Internationalization
+- 📣 **Promotion** - Spreading the word
+- 💬 **Support** - Helping others in issues/discussions
+
+### How to Get Featured
+
+1. Make meaningful contributions
+2. Be added automatically via GitHub's contributor graph
+3. Open multiple PRs or resolve complex issues for special recognition
+4. Help the community grow
+
+**Special Badges:**
+- 🥇 **Gold** - 10+ merged PRs
+- 🥈 **Silver** - 5+ merged PRs
+- 🥉 **Bronze** - 3+ merged PRs
+- ⭐ **Rising Star** - Outstanding first contribution
+- 🎯 **Bug Hunter** - Reported 5+ valid bugs
+- 📚 **Doc Master** - Major documentation improvements
+- 🎨 **Designer** - Significant UI/UX contributions
+
+### Become a Contributor
+
+Ready to make an impact? Check out our [Contributing Guide](#-contributing) and start coding! Every contribution, no matter the size, is valuable. 💪
+
+---
+
+## �🐛 Known Issues & Troubleshooting
 
 ### Common Issues
 
