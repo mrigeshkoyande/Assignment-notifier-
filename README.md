@@ -642,6 +642,55 @@ Help ensure quality!
 - Performance testing
 - Security audits
 
+---
+
+### 🎯 Good First Issues for Newcomers
+
+New to open source? Start with these beginner-friendly tasks:
+
+<table>
+<tr>
+<td width="50%">
+
+**🟢 Easy Tasks**
+- [ ] Add more sample assignment data
+- [ ] Improve error messages
+- [ ] Add loading indicators
+- [ ] Fix UI alignment issues
+- [ ] Update dependencies
+- [ ] Add comments to code
+- [ ] Write unit tests
+- [ ] Create example use cases
+
+</td>
+<td width="50%">
+
+**🟡 Medium Tasks**
+- [ ] Add email notification system
+- [ ] Create export to PDF feature
+- [ ] Implement dark mode
+- [ ] Add search functionality
+- [ ] Create API documentation
+- [ ] Add form validation
+- [ ] Implement caching
+- [ ] Add accessibility features
+
+</td>
+</tr>
+</table>
+
+**Labels to look for:**
+- `good first issue` - Perfect for beginners
+- `help wanted` - We need assistance
+- `documentation` - Docs improvements
+- `bug` - Something isn't working
+- `enhancement` - New feature ideas
+- `UI/UX` - Design improvements
+
+[👉 Browse Good First Issues](https://github.com/mrigeshkoyande/Assignment-notifier-/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+
+---
+
 ### Contribution Guidelines
 
 1. **Fork** the repository
