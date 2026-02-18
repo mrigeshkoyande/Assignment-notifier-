@@ -12,6 +12,15 @@
   <img src="https://img.shields.io/badge/TensorFlow.js-AI_Powered-FF6F00.svg?logo=tensorflow" alt="TensorFlow"/>
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"/>
+  <img src="https://img.shields.io/badge/Contributions-Encouraged-blue.svg?style=flat-square" alt="Contributions"/>
+  <img src="https://img.shields.io/github/contributors/mrigeshkoyande/Assignment-notifier-?style=flat-square" alt="Contributors"/>
+  <img src="https://img.shields.io/github/issues/mrigeshkoyande/Assignment-notifier-?style=flat-square" alt="Issues"/>
+  <img src="https://img.shields.io/github/issues-pr/mrigeshkoyande/Assignment-notifier-?style=flat-square" alt="Pull Requests"/>
+  <img src="https://img.shields.io/github/last-commit/mrigeshkoyande/Assignment-notifier-?style=flat-square" alt="Last Commit"/>
+</p>
+
 <h3 align="center">🎓 A Modern Full-Stack Educational Ecosystem</h3>
 
 <p align="center">
