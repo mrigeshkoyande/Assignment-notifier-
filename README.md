@@ -691,43 +691,180 @@ New to open source? Start with these beginner-friendly tasks:
 
 ---
 
-### Contribution Guidelines
+### 🛠️ Development Setup for Contributors
 
-1. **Fork** the repository
-2. **Create** a feature branch
-   ```bash
-   git checkout -b feature/AmazingFeature
-   ```
-3. **Commit** your changes
-   ```bash
-   git commit -m 'Add some AmazingFeature'
-   ```
-4. **Push** to the branch
-   ```bash
-   git push origin feature/AmazingFeature
-   ```
-5. **Open** a Pull Request
-
-### Code Style Guidelines
-
-- Follow ESLint rules for JavaScript/React
-- Use PEP 8 for Python code
-- Write meaningful commit messages
-- Add comments for complex logic
-- Update documentation for new features
-
-### Testing Your Changes
+#### Step 1: Fork & Clone
 
 ```bash
-# Run frontend dev server
-npm run dev
+# Fork the repo on GitHub, then clone your fork
+git clone https://github.com/YOUR_USERNAME/Assignment-notifier-.git
+cd Assignment-notifier-
 
-# Test Python backend
-python -m pytest
-
-# Check for errors
-npm run lint
+# Add upstream remote
+git remote add upstream https://github.com/mrigeshkoyande/Assignment-notifier-.git
 ```
+
+#### Step 2: Create a Branch
+
+```bash
+# Create a descriptive branch name
+git checkout -b feature/add-dark-mode
+# or
+git checkout -b fix/camera-permission-bug
+# or
+git checkout -b docs/improve-setup-guide
+```
+
+#### Step 3: Install Dependencies
+
+```bash
+# Install frontend dependencies
+cd notification-app && npm install && cd ..
+cd test-vite-app && npm install && cd ..
+
+# Install Python dependencies
+cd python-backend
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+cd ..
+```
+
+#### Step 4: Make Your Changes
+
+- Write clean, readable code
+- Follow existing code style
+- Add comments for complex logic
+- Test your changes thoroughly
+- Update documentation if needed
+
+#### Step 5: Run Tests
+
+```bash
+# Frontend (if tests exist)
+npm test
+
+# Linting
+npm run lint
+
+# Python tests (if exists)
+pytest
+
+# Manual testing
+npm run dev
+```
+
+#### Step 6: Commit Your Changes
+
+```bash
+# Stage your changes
+git add .
+
+# Commit with a descriptive message
+git commit -m "feat: add dark mode toggle to dashboard"
+# or
+git commit -m "fix: resolve camera permission issue on Firefox"
+# or
+git commit -m "docs: update installation instructions"
+```
+
+**Commit Message Format:**
+- `feat:` New feature
+- `fix:` Bug fix
+- `docs:` Documentation changes
+- `style:` Code formatting (no logic change)
+- `refactor:` Code refactoring
+- `test:` Adding tests
+- `chore:` Maintenance tasks
+
+#### Step 7: Push & Create Pull Request
+
+```bash
+# Push to your fork
+git push origin feature/add-dark-mode
+
+# Then go to GitHub and create a Pull Request
+```
+
+**Pull Request Guidelines:**
+- Give it a clear, descriptive title
+- Explain what changes you made and why
+- Reference any related issues (#123)
+- Add screenshots for UI changes
+- Ensure all checks pass
+- Be responsive to feedback
+
+---
+
+### Contribution Guidelines
+
+**Code Style Guidelines:**
+
+**JavaScript/React:**
+- Follow ESLint rules (configured in project)
+- Use functional components and hooks
+- Use meaningful variable names
+- Add PropTypes or TypeScript types
+- Keep components small and focused
+
+**Python:**
+- Follow PEP 8 style guide
+- Use type hints where appropriate
+- Write docstrings for functions
+- Keep functions small and single-purpose
+
+**General:**
+- Write self-documenting code
+- Add comments for complex logic
+- Use consistent indentation (2 spaces for JS, 4 for Python)
+- Remove console.logs and debug code before committing
+
+**Testing Your Changes:**
+
+Before submitting, ensure:
+- ✅ Code runs without errors
+- ✅ All existing features still work
+- ✅ New features work as expected
+- ✅ No console errors or warnings
+- ✅ Responsive on mobile and desktop
+- ✅ Works on Chrome, Firefox, Safari, Edge
+- ✅ Linting passes: `npm run lint`
+
+---
+
+### 📋 Contribution Checklist
+
+Before submitting your PR, check off these items:
+
+- [ ] Code follows project style guidelines
+- [ ] I have tested my changes thoroughly
+- [ ] I have updated documentation if needed
+- [ ] My commits have descriptive messages
+- [ ] I have added comments to complex code
+- [ ] No console errors or warnings
+- [ ] Responsive design is maintained
+- [ ] Existing features still work
+- [ ] I have read the Code of Conduct
+
+---
+
+### 🤔 Need Help?
+
+Stuck? Don't worry, we're here to help!
+
+- 💬 Comment on the issue you're working on
+- 📧 Reach out to maintainers
+- 📖 Check existing code for examples
+- 🔍 Search closed issues and PRs
+- 💡 Ask in [GitHub Discussions](https://github.com/mrigeshkoyande/Assignment-notifier-/discussions)
+
+**Remember:** No question is too small! We were all beginners once. 💙
+
+---
+
+### 🙏 Thank You!
+
+Every contribution matters! Thank you for taking the time to contribute and make this project better. Your efforts help students and teachers around the world. 🌍❤️
 
 ---
 
