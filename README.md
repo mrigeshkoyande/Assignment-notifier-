@@ -180,6 +180,7 @@ Assignment-notifier/
 
 #### 👨‍🏫 Teacher Dashboard
 - Class attendance tracking
+- Teaching schedule with location and time reminders
 - Assignment creation and distribution
 - Student analytics and performance metrics
 - Data export functionality (CSV, Excel)
