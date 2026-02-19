@@ -105,7 +105,7 @@ Assignment Notifier is a **professional, full-stack educational platform** desig
 </td>
 <td width="33%" align="center">
 <h3>🔐 For Admins</h3>
-<p>Centralized user management, system-wide analytics, role assignment, and complete control over platform configuration.</p>
+<p>Centralized user management, system-wide analytics, role assignment, timetable creation and scheduling, and complete control over platform configuration.</p>
 </td>
 </tr>
 </table>
