@@ -173,6 +173,7 @@ Assignment-notifier/
 
 #### 🔐 Admin Panel
 - User management (Create, Read, Update, Delete)
+- Timetable creation and management for all classrooms
 - System analytics and reports
 - Role assignment and permissions
 - User details and activity monitoring
