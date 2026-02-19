@@ -97,7 +97,7 @@ Assignment Notifier is a **professional, full-stack educational platform** desig
 <tr>
 <td width="33%" align="center">
 <h3>🎓 For Students</h3>
-<p>Never miss a deadline with smart notifications. Track all your assignments, view attendance records, and communicate with teachers seamlessly.</p>
+<p>Never miss a deadline with smart notifications. Track all your assignments, view attendance records, find lecture locations instantly, and communicate with teachers seamlessly.</p>
 </td>
 <td width="33%" align="center">
 <h3>👨‍🏫 For Teachers</h3>
