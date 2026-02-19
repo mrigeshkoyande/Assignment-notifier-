@@ -5,11 +5,12 @@
 
 import { useAuth } from "../context/AuthContext";
 import { useNavigate, Routes, Route } from "react-router-dom";
-import { FaCalendarCheck, FaComments, FaFileAlt, FaSignOutAlt, FaChartLine, FaBook, FaCog } from "react-icons/fa";
+import { FaCalendarCheck, FaComments, FaFileAlt, FaSignOutAlt, FaChartLine, FaBook, FaCog, FaMapMarkerAlt } from "react-icons/fa";
 import useAttendance from "../hooks/useAttendance";
 import Attendance from "./student/Attendance";
 import Assignments from "./student/Assignments";
 import MyClassrooms from "./student/MyClassrooms";
+import MyLectures from "./student/MyLectures";
 import Chat from "./student/Chat";
 import Settings from "./student/Settings";
 import "./StudentDashboard.css";
@@ -30,6 +31,7 @@ function StudentDashboard() {
 
     const menuItems = [
         { id: "classrooms", name: "My Classrooms", icon: FaBook, path: "/student-dashboard/classrooms" },
+        { id: "lectures", name: "Where is My Lecture?", icon: FaMapMarkerAlt, path: "/student-dashboard/lectures" },
         { id: "attendance", name: "Mark Attendance", icon: FaCalendarCheck, path: "/student-dashboard/attendance" },
         { id: "assignments", name: "Assignments", icon: FaFileAlt, path: "/student-dashboard/assignments" },
         { id: "chat", name: "Mentor Chat", icon: FaComments, path: "/student-dashboard/chat" },
@@ -122,6 +124,7 @@ function StudentDashboard() {
                             </div>
                         </>
                     } />
+                    <Route path="/lectures" element={<MyLectures />} />
                     <Route path="/classrooms" element={<MyClassrooms />} />
                     <Route path="/attendance" element={<Attendance />} />
                     <Route path="/assignments" element={<Assignments />} />
