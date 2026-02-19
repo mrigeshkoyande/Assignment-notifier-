@@ -101,7 +101,7 @@ Assignment Notifier is a **professional, full-stack educational platform** desig
 </td>
 <td width="33%" align="center">
 <h3>👨‍🏫 For Teachers</h3>
-<p>Effortlessly create and distribute assignments, track student progress, monitor attendance, and export detailed analytics reports.</p>
+<p>Effortlessly create and distribute assignments, track student progress, monitor attendance, view teaching schedules with location reminders, and export detailed analytics reports.</p>
 </td>
 <td width="33%" align="center">
 <h3>🔐 For Admins</h3>
