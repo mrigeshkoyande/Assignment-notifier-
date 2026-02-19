@@ -188,6 +188,7 @@ Assignment-notifier/
 
 #### 👨‍🎓 Student Dashboard
 - Personal assignment list
+- Where is My Lecture? - Real-time lecture location and schedule finder
 - Attendance calendar view
 - Doubt/Chat portal for queries
 - Progress tracking and notifications
