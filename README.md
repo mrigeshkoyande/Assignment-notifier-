@@ -201,6 +201,18 @@ Assignment-notifier/
 - **Image Capture** - Photo verification for each attendance entry
 - **Performance Optimized** - 70% smaller than traditional systems
 
+### 📅 Smart Timetable & Lecture Location System
+- **Admin-Controlled Scheduling** - Centralized timetable creation and management
+- **Where is My Lecture?** - Students can instantly find lecture locations and timings
+- **Real-time Lecture Tracking** - Shows current and upcoming lectures
+- **Smart Notifications** - Browser notifications 15 minutes before class starts
+- **Weekly Overview** - Complete week's schedule at a glance
+- **Teacher Schedule Management** - Teachers can view their teaching timetable
+- **Location Reminders** - Displays lecture hall/room information prominently
+- **Day-wise View** - Filter schedule by specific days
+- **Automatic Filtering** - Shows only relevant lectures for each user
+- **Firebase Integration** - Cloud-based timetable storage and synchronization
+
 ---
 
 ## 🎬 Demo
