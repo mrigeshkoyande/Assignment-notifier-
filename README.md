@@ -83,7 +83,8 @@ Assignment Notifier is a **professional, full-stack educational platform** desig
 - ⚡ **Real-time Notifications** - Never miss an assignment deadline
 - 🔐 **Role-Based Access Control** - Separate dashboards for Admin, Teacher, and Student
 - 🤖 **AI-Powered Attendance** - Facial recognition using TensorFlow.js + COCO-SSD
-- 📱 **Fully Responsive** - Works seamlessly on desktop, tablet, and mobile devices
+- � **Smart Timetable System** - Lecture schedules with location reminders and notifications
+- �📱 **Fully Responsive** - Works seamlessly on desktop, tablet, and mobile devices
 - 🔥 **Firebase Integration** - Secure authentication and cloud storage
 - 🎨 **Modern UI/UX** - Clean, professional design with glass-morphism effects
 - 📊 **Advanced Analytics** - Track performance and generate reports
