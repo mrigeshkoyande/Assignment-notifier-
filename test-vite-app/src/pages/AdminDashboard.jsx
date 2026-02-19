@@ -5,12 +5,13 @@
 
 import { useAuth } from "../context/AuthContext";
 import { useNavigate, Routes, Route } from "react-router-dom";
-import { FaUsersCog, FaChartLine, FaCog, FaSignOutAlt, FaBook } from "react-icons/fa";
+import { FaUsersCog, FaChartLine, FaCog, FaSignOutAlt, FaBook, FaCalendarAlt } from "react-icons/fa";
 import UserManagement from "./admin/UserManagement";
 import UserDetails from "./admin/UserDetails";
 import Settings from "./admin/Settings";
 import AddUser from "./admin/AddUser";
 import ClassroomAdmin from "./admin/ClassroomAdmin";
+import TimetableManagement from "./admin/TimetableManagement";
 import "./AdminDashboard.css";
 
 /**
@@ -29,6 +30,7 @@ function AdminDashboard() {
     const menuItems = [
         { id: "users", name: "User Management", icon: FaUsersCog, path: "/admin-dashboard/users" },
         { id: "classrooms", name: "Classroom Management", icon: FaBook, path: "/admin-dashboard/classrooms" },
+        { id: "timetable", name: "Timetable Management", icon: FaCalendarAlt, path: "/admin-dashboard/timetable" },
         { id: "overview", name: "System Overview", icon: FaChartLine, path: "/admin-dashboard/overview" },
         { id: "settings", name: "Settings", icon: FaCog, path: "/admin-dashboard/settings" }
     ];
@@ -92,6 +94,7 @@ function AdminDashboard() {
                     <Route path="users" element={<UserManagement />} />
                     <Route path="users/:userId" element={<UserDetails />} />
                     <Route path="add-user" element={<AddUser />} />
+                    <Route path="timetable" element={<TimetableManagement />} />
                     <Route path="classrooms" element={<ClassroomAdmin />} />
                     <Route path="overview" element={<div className="glass-panel" style={{ padding: '2rem' }}><h2>System Overview</h2><p>System stats coming soon...</p></div>} />
                     <Route path="settings" element={<Settings />} />
