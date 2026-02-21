@@ -1,0 +1,948 @@
+/* TeacherAttendance.css */
+/* Uses ta- prefix to avoid conflicts */
+
+.ta-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.ta-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.ta-header h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.ta-header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* Error Banner */
+.ta-error-banner {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: taSlideDown 0.3s ease-out;
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.ta-error-banner button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+@keyframes taSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Spinner */
+.ta-spinner {
+    animation: taSpin 1s linear infinite;
+}
+
+@keyframes taSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Tabs */
+.ta-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+}
+
+.ta-tab-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: transparent;
+    border: 2px solid transparent;
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.ta-tab-btn:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.ta-tab-btn.active {
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+}
+
+/* Success Overlay */
+.ta-success-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: taFadeIn 0.4s ease;
+}
+
+@keyframes taFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.ta-success-card {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(249, 115, 22, 0.1));
+    border: 2px solid rgba(245, 158, 11, 0.4);
+    border-radius: 1.5rem;
+    padding: 2.5rem 3rem;
+    text-align: center;
+    max-width: 480px;
+    width: 90%;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5), 0 0 60px rgba(245, 158, 11, 0.2);
+    animation: taScaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes taScaleIn {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.ta-success-icon-ring {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(245, 158, 11, 0.2);
+    border: 3px solid #f59e0b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: #f59e0b;
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.4);
+}
+
+.ta-success-card h2 {
+    font-size: 1.8rem;
+    color: #f59e0b;
+    margin-bottom: 0.5rem;
+}
+
+.ta-success-card>p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.ta-success-photo-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.ta-success-photo {
+    width: 240px;
+    height: auto;
+    border-radius: 1rem;
+    border: 3px solid #f59e0b;
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+    display: block;
+    margin: 0 auto;
+}
+
+.ta-success-photo-badge {
+    position: absolute;
+    bottom: -0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.3rem 1rem;
+    border-radius: 2rem;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+}
+
+.ta-redirect-hint {
+    color: var(--text-muted) !important;
+    font-size: 0.85rem !important;
+    margin-top: 1.25rem !important;
+    animation: taPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes taPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Start screen */
+.ta-start {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 4rem 3rem;
+    text-align: center;
+}
+
+.ta-camera-icon {
+    color: #f59e0b;
+    margin-bottom: 2rem;
+}
+
+.ta-start h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.ta-start p {
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.ta-btn-start {
+    font-size: 1.2rem;
+    padding: 1rem 2.5rem;
+}
+
+.ta-help-text {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+/* Verify screen */
+.ta-verify {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem;
+}
+
+.ta-info-banner {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(249, 115, 22, 0.12));
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 0.75rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.ta-info-banner p {
+    margin: 0;
+    color: var(--text-main);
+    font-size: 0.95rem;
+}
+
+/* Camera layout */
+.ta-camera-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.ta-video-wrap {
+    position: relative;
+}
+
+.ta-video-container {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: var(--bg-dark);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.ta-webcam {
+    width: 100%;
+    display: block;
+    border-radius: 1rem;
+}
+
+.ta-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Capture frame guide */
+.ta-capture-frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 70%;
+    pointer-events: none;
+}
+
+.ta-corner {
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    border: 3px solid rgba(245, 158, 11, 0.85);
+}
+
+.ta-corner.top-left {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+    border-radius: 8px 0 0 0;
+}
+
+.ta-corner.top-right {
+    top: 0;
+    right: 0;
+    border-left: none;
+    border-bottom: none;
+    border-radius: 0 8px 0 0;
+}
+
+.ta-corner.bottom-left {
+    bottom: 0;
+    left: 0;
+    border-right: none;
+    border-top: none;
+    border-radius: 0 0 0 8px;
+}
+
+.ta-corner.bottom-right {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+    border-radius: 0 0 8px 0;
+}
+
+/* Countdown */
+.ta-countdown-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.ta-countdown-num {
+    font-size: 6rem;
+    font-weight: bold;
+    color: white;
+    animation: taCountPulse 1s ease;
+    text-shadow: 0 0 30px rgba(245, 158, 11, 0.8);
+}
+
+@keyframes taCountPulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.ta-flash {
+    position: absolute;
+    inset: 0;
+    background: white;
+    animation: taFlash 0.3s ease-out;
+    pointer-events: none;
+    z-index: 15;
+}
+
+@keyframes taFlash {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Status badges inside video */
+.ta-status-indicators {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.ta-status-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.9rem;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.ta-status-badge.active {
+    border-color: #f59e0b;
+    color: #f59e0b;
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+}
+
+/* Snapshot panel */
+.ta-snapshot-panel {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ta-snapshot-panel h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    text-align: center;
+}
+
+.ta-preview-hint {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.ta-snapshot-img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    border: 2px solid rgba(245, 158, 11, 0.35);
+    background: #000;
+}
+
+.ta-snapshot-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 0.75rem;
+    border: 2px dashed rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: var(--text-muted);
+}
+
+.ta-preview-info {
+    text-align: center;
+    padding: 0.5rem;
+    background: rgba(245, 158, 11, 0.08);
+    border-radius: 0.5rem;
+}
+
+.ta-preview-info small {
+    color: #f59e0b;
+    font-size: 0.8rem;
+}
+
+.ta-detection-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 0.5rem;
+    color: #f59e0b;
+    font-size: 0.85rem;
+    font-weight: 600;
+    animation: taFadeIn 0.4s ease;
+}
+
+/* Buttons */
+.ta-btn-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.ta-btn-primary {
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    border: none;
+    border-radius: 0.75rem;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 0.9rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+.ta-btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(245, 158, 11, 0.5);
+}
+
+.ta-btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.ta-btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.75rem;
+    color: var(--text-main);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.9rem 1.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ta-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: translateY(-2px);
+}
+
+.ta-btn-confirm {
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    border: none;
+    border-radius: 0.75rem;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 0.9rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.ta-btn-confirm:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+.ta-btn-confirm:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.ta-btn-retake {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.75rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    border-radius: 0.75rem;
+    color: var(--text-main);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ta-btn-retake:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.16);
+    transform: translateY(-2px);
+}
+
+.ta-btn-retake:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Preview / Confirm section */
+.ta-preview-container {
+    text-align: center;
+}
+
+.ta-preview-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.4rem 1.2rem;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+}
+
+.ta-preview-container h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.ta-preview-instruction {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.ta-captured-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    align-items: center;
+}
+
+.ta-photo-frame {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.ta-preview-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    display: block;
+    border: 3px solid #f59e0b;
+    box-shadow: 0 8px 32px rgba(245, 158, 11, 0.3), 0 0 0 1px rgba(245, 158, 11, 0.15);
+}
+
+.ta-photo-ts {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.3rem 0.75rem;
+    border-radius: 0.5rem;
+    backdrop-filter: blur(4px);
+}
+
+.ta-photo-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ta-meta-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.75rem;
+}
+
+.ta-meta-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.ta-meta-val {
+    font-size: 0.94rem;
+    color: var(--text-main);
+    font-weight: 500;
+    word-break: break-all;
+}
+
+.ta-teacher-chip {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.25rem 0.85rem;
+    border-radius: 2rem;
+}
+
+.ta-preview-checks {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(16, 185, 129, 0.05);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.ta-check-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #10b981;
+    font-size: 0.95rem;
+}
+
+.ta-check-icon {
+    font-size: 1.1rem;
+}
+
+/* Calendar tab */
+.ta-calendar-tab {
+    animation: taFadeIn 0.4s ease;
+}
+
+.ta-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    gap: 1.5rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.ta-loading p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* History records */
+.ta-records-panel {
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.ta-records-panel h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+}
+
+.ta-records-scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.ta-records-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ta-records-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+}
+
+.ta-records-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.ta-record-item {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr 1.5fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.ta-record-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(4px);
+}
+
+.ta-record-thumb {
+    width: 52px;
+    height: 52px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 2px solid rgba(245, 158, 11, 0.4);
+    flex-shrink: 0;
+}
+
+.ta-record-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ta-record-date {
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 0.95rem;
+}
+
+.ta-record-time {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.ta-record-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #10b981;
+    font-weight: 500;
+}
+
+.ta-status-green {
+    color: #10b981;
+    font-size: 1.1rem;
+}
+
+.ta-record-location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.ta-no-records {
+    margin-top: 2rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ta-no-records svg {
+    color: var(--text-muted);
+    opacity: 0.5;
+}
+
+.ta-no-records p {
+    font-size: 1.2rem;
+    color: var(--text-main);
+    margin: 0;
+}
+
+.ta-no-records small {
+    color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width:768px) {
+    .ta-container {
+        padding: 1rem;
+    }
+
+    .ta-tabs {
+        flex-direction: column;
+    }
+
+    .ta-camera-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .ta-snapshot-panel {
+        order: -1;
+    }
+
+    .ta-captured-card {
+        grid-template-columns: 1fr;
+    }
+
+    .ta-record-item {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto auto;
+    }
+
+    .ta-preview-checks {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+}
