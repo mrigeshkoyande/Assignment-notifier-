@@ -17,6 +17,7 @@
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -372,5 +373,261 @@
 
     .time-text {
         font-size: 8px;
+    }
+}
+
+/* ──────────────────────────────────────────
+   TODAY HIGHLIGHT
+────────────────────────────────────────── */
+.calendar-day.today {
+    box-shadow: 0 0 0 2px #667eea, 0 0 16px rgba(102, 126, 234, 0.4);
+    border-color: #667eea !important;
+}
+
+/* Clickable present days */
+.calendar-day.clickable {
+    cursor: pointer;
+}
+
+.calendar-day.clickable:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
+}
+
+/* 📷 indicator on days with photo */
+.has-photo-indicator {
+    font-size: 11px;
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    opacity: 0.85;
+}
+
+/* ──────────────────────────────────────────
+   DAY DETAIL PHOTO MODAL
+────────────────────────────────────────── */
+.day-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.day-modal-card {
+    position: relative;
+    background: linear-gradient(135deg, rgba(30, 30, 50, 0.95), rgba(15, 23, 42, 0.98));
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    max-width: 440px;
+    width: 92%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6), 0 0 60px rgba(16, 185, 129, 0.1);
+    animation: modalIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalIn {
+    from {
+        transform: scale(0.8) translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.day-modal-card::-webkit-scrollbar {
+    width: 4px;
+}
+
+.day-modal-card::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.day-modal-card::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.day-modal-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.day-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    transform: rotate(90deg);
+}
+
+.day-modal-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.modal-check-icon {
+    font-size: 2.5rem;
+    color: #10b981;
+    margin-bottom: 0.75rem;
+    display: block;
+    filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.6));
+}
+
+.day-modal-header h3 {
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin: 0 0 0.4rem;
+    font-weight: 700;
+}
+
+.day-modal-header p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Photo section */
+.day-modal-photo-section {
+    margin-bottom: 1.5rem;
+}
+
+.day-modal-photo-section h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.day-modal-photo-frame {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.day-modal-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    display: block;
+    border: 2px solid rgba(16, 185, 129, 0.4);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.day-modal-photo-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3rem 0.75rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.day-modal-no-photo {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    color: rgba(255, 255, 255, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.day-modal-no-photo p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Meta rows */
+.day-modal-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.day-modal-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.75rem;
+    gap: 1rem;
+}
+
+.modal-meta-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+.modal-meta-value {
+    font-size: 0.9rem;
+    color: #ffffff;
+    font-weight: 500;
+    text-align: right;
+    word-break: break-all;
+}
+
+@media (max-width: 480px) {
+    .day-modal-card {
+        padding: 1.5rem;
+    }
+
+    .day-modal-meta-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .modal-meta-value {
+        text-align: left;
     }
 }
