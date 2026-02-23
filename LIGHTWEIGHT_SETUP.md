@@ -1,4 +1,7 @@
-# Lightweight Attendance System - Setup Guide
+# Lightweight Attendance System — Setup Guide
+
+> **Version:** 2.1 | **Last Updated:** February 23, 2026  
+> Part of the [Assignment Notifier Platform](https://github.com/mrigeshkoyande/Assignment-notifier-)
 
 ## What Changed ✨
 
@@ -399,6 +402,21 @@ A: App shows friendly error, user can try again.
 
 **Q: How do I integrate with my authentication?**
 A: Call `window.setUserInfo(uid, name, email)` after login.
+
+---
+
+## 🆕 v2.1 Updates (February 2026)
+
+The following components were added or improved in v2.1:
+
+| Component | Change |
+|-----------|--------|
+| `TeacherAttendance.jsx` | New teacher attendance management UI with filters and stats |
+| `AttendanceCalendar.jsx` | Photo support and detailed entry modals |
+| Camera Preview CSS | Complete UI overhaul for capture flow |
+| Dashboard integration | Teacher dashboard now shows attendance summary widget |
+
+To use the teacher attendance page, navigate to `/teacher/attendance` after logging in as a teacher.
 
 ---
 
