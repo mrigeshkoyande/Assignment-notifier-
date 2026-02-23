@@ -19,6 +19,8 @@
   <img src="https://img.shields.io/github/issues/mrigeshkoyande/Assignment-notifier-?style=flat-square" alt="Issues"/>
   <img src="https://img.shields.io/github/issues-pr/mrigeshkoyande/Assignment-notifier-?style=flat-square" alt="Pull Requests"/>
   <img src="https://img.shields.io/github/last-commit/mrigeshkoyande/Assignment-notifier-?style=flat-square" alt="Last Commit"/>
+  <img src="https://img.shields.io/badge/Last%20Updated-February%202026-orange.svg?style=flat-square" alt="Last Updated"/>
+  <img src="https://img.shields.io/badge/Status-Active%20Development-brightgreen.svg?style=flat-square" alt="Status"/>
 </p>
 
 <h3 align="center">🎓 A Modern Full-Stack Educational Ecosystem</h3>
@@ -47,7 +49,7 @@
 
 ---
 
-## � Table of Contents
+## 📋 Table of Contents
 
 - [Overview](#-overview)
 - [Why Choose This Platform?](#-why-choose-this-platform)
@@ -70,6 +72,24 @@
 - [Roadmap](#-roadmap)
 - [License](#-license)
 - [Support](#-support)
+
+---
+
+##  Recent Updates
+
+### v2.1 — February 2026 *(Latest)*
+- ✅ **Teacher Attendance Management Interface** — Full UI for teachers to view, filter, and manage class attendance records with live statistics and export support
+- ✅ **Teacher Attendance Dashboard Integration** — Integrated attendance tracking directly into the teacher dashboard workflow
+- ✅ **Enhanced Attendance Calendar** — Added photo support and detailed modal views for attendance entries
+- ✅ **Live Preview Thumbnail System** — Real-time thumbnails during photo capture in attendance flow
+- ✅ **Camera Preview & Capture UI** — Comprehensive CSS overhaul for camera preview components
+
+### v2.0 — January 2026
+- ✅ Lightweight attendance system rebuild (70% smaller bundle)
+- ✅ TensorFlow.js + COCO-SSD face detection
+- ✅ Smart timetable with "Where is My Lecture?" feature
+- ✅ Firebase real-time synchronization
+- ✅ Role-based dashboards (Admin / Teacher / Student)
 
 ---
 
@@ -269,8 +289,8 @@ Assignment-notifier/
 #### Windows
 ```bash
 # Clone the repository
-git clone <your-repo-url>
-cd Assignment-notifier
+git clone https://github.com/mrigeshkoyande/Assignment-notifier-.git
+cd Assignment-notifier-
 
 # Run automated setup
 quick-setup.bat
@@ -282,8 +302,8 @@ start_app.bat
 #### Linux/Mac
 ```bash
 # Clone the repository
-git clone <your-repo-url>
-cd Assignment-notifier
+git clone https://github.com/mrigeshkoyande/Assignment-notifier-.git
+cd Assignment-notifier-
 
 # Make scripts executable
 chmod +x quick-setup.sh
@@ -1395,6 +1415,9 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 [![GitHub followers](https://img.shields.io/github/followers/mrigeshkoyande?style=social)](https://github.com/mrigeshkoyande)
 [![GitHub User's stars](https://img.shields.io/github/stars/mrigeshkoyande?style=social)](https://github.com/mrigeshkoyande)
+
+📧 [mrigeshkoyande@gmail.com](mailto:mrigeshkoyande@gmail.com)  
+🌐 [github.com/mrigeshkoyande](https://github.com/mrigeshkoyande)
 
 </div>
 
