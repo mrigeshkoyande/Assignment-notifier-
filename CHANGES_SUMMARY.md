@@ -1,6 +1,26 @@
-**LIGHTWEIGHT ATTENDANCE SYSTEM - CHANGES SUMMARY**
+**ASSIGNMENT NOTIFIER & COLLEGE MANAGEMENT — CHANGES SUMMARY**
 
-## 🎯 What Was Done
+> Last Updated: February 23, 2026
+
+---
+
+## 🆕 v2.1 — February 2026 *(Latest)*
+
+### New Features
+- **Teacher Attendance Management Interface** — Complete UI for teachers to view, filter, search, and manage class attendance records with live statistics panels and CSV export support
+- **Teacher Attendance Dashboard Widget** — Quick-access attendance summary integrated into the main teacher dashboard
+- **Enhanced Attendance Calendar** — Photo thumbnails and detailed modal view for each attendance entry, including timestamp, location, and photo preview
+- **Live Preview Thumbnail System** — Real-time video thumbnails shown before confirming attendance capture
+- **Camera Preview & Capture UI** — Complete CSS overhaul for camera preview, capture confirmation, and photo review components
+
+### Bug Fixes & Improvements
+- Improved attendance record loading performance
+- Fixed modal close behavior on background click
+- Updated CSS variables for consistent theming across dashboards
+
+---
+
+## 🎯 v2.0 — What Was Done
 
 Your attendance system has been completely rebuilt from scratch with a focus on:
 - ⚡ **Performance** (70% smaller, 150% faster)
