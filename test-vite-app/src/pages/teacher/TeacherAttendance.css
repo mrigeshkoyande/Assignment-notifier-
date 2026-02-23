@@ -946,3 +946,38 @@
         align-items: flex-start;
     }
 }
+
+/* ─── Accessibility ─────────────────────────────────────────────────────────── */
+
+.ta-container *:focus-visible {
+    outline: 2px solid #f59e0b;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Reduced motion — respect user OS preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ─── Print styles ───────────────────────────────────────────────────────────── */
+
+@media print {
+    .ta-btn-group,
+    .ta-tabs,
+    .ta-camera-layout {
+        display: none;
+    }
+
+    .ta-records-scroll {
+        max-height: none;
+        overflow: visible;
+    }
+}
