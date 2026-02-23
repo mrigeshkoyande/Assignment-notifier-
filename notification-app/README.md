@@ -1,16 +1,96 @@
-# React + Vite
+# 📚 Assignment Notifier App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Part of the [Assignment Notifier & College Management Platform](https://github.com/mrigeshkoyande/Assignment-notifier-)
 
-Currently, two official plugins are available:
+A lightweight React + Vite application for tracking assignments, deadlines, and subject-wise notifications.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 📋 **Assignment Dashboard** — View all pending and completed assignments at a glance
+- 📅 **Deadline Tracking** — Visual indicators and alerts for approaching due dates
+- 🏷️ **Subject-wise Organization** — Filter assignments by subject or class
+- ✅ **Completion Marking** — Mark individual assignments as done
+- ➕ **Add New Assignments** — Quick form to create new assignment entries
+- 📱 **Responsive Design** — Works on desktop, tablet, and mobile
+- 🔔 **Custom Notifications** — Set personalized reminders per assignment
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js v16+
+- npm (comes with Node.js)
+
+### Installation
+
+```bash
+# From the repository root
+cd notification-app
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+# Opens at http://localhost:5173
+```
+
+### Build for Production
+
+```bash
+npm run build
+# Output in dist/
+```
+
+---
+
+## 📁 Project Structure
+
+```
+notification-app/
+├── public/                  # Static assets
+├── src/
+│   ├── components/
+│   │   ├── AssignmentList.jsx   # Main list component
+│   │   ├── Navbar.jsx           # Top navigation bar
+│   │   └── Footer.jsx           # App footer
+│   ├── pages/
+│   │   ├── home.jsx             # Home dashboard
+│   │   ├── NewAssignment.jsx    # Add assignment form
+│   │   ├── SubjectPage.jsx      # Subject-wise view
+│   │   └── About.jsx            # About page
+│   ├── data/
+│   │   └── assignments.jsx      # Assignment data store
+│   ├── App.jsx                  # Main app with routing
+│   └── main.jsx                 # Entry point
+├── package.json
+└── vite.config.js
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| React | 19.2.0 | UI framework |
+| Vite | 7.x | Build tool & dev server |
+| React Router | 7.x | Client-side routing |
+
+---
+
+## 🔗 Related
+
+- [College Management System](../test-vite-app/README.md) — Full-featured management platform
+- [Python Backend](../python-backend/) — Flask API for attendance
+- [Main README](../README.md) — Full project documentation
+
+---
+
+## 👨‍💻 Author
+
+**Mrigesh Koyande** — [GitHub](https://github.com/mrigeshkoyande) · [mrigeshkoyande@gmail.com](mailto:mrigeshkoyande@gmail.com)
