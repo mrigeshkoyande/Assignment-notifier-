@@ -78,8 +78,8 @@
     margin-bottom: 2.5rem;
     padding: 0.75rem;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
-    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 1rem;
 }
@@ -118,8 +118,8 @@
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -286,6 +286,8 @@
     padding: 1rem 1.5rem;
     margin-bottom: 1.5rem;
     text-align: center;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
 }
 
 .ta-info-banner p {
@@ -449,6 +451,7 @@
     gap: 0.5rem;
     padding: 0.6rem 0.9rem;
     background: rgba(15, 23, 42, 0.8);
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     border-radius: 0.5rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -535,6 +538,186 @@
     font-size: 0.85rem;
     font-weight: 600;
     animation: taFadeIn 0.4s ease;
+}
+
+/* LIVE Indicator for Teacher Attendance */
+.ta-snapshot-panel .live-indicator {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(220, 38, 38, 0.95);
+    padding: 0.4rem 0.8rem;
+    border-radius: 2rem;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.5);
+}
+
+.ta-snapshot-panel .live-dot {
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    animation: taLivePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes taLivePulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.2);
+    }
+}
+
+.ta-snapshot-panel .live-text {
+    color: white;
+    font-weight: bold;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+/* Preview Frame Wrapper for Teacher */
+.ta-preview-frame-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Snapshot Panel States */
+.ta-snapshot-panel {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.ta-snapshot-panel.face-detected {
+    animation: taGlowOrange 2s ease-in-out infinite;
+}
+
+.ta-snapshot-panel.capturing {
+    animation: taGlowBlue 1s ease-in-out;
+}
+
+@keyframes taGlowOrange {
+    0%, 100% {
+        box-shadow: 0 0 0 rgba(245, 158, 11, 0);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+    }
+}
+
+@keyframes taGlowBlue {
+    0%, 100% {
+        box-shadow: 0 0 0 rgba(59, 130, 246, 0);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
+    }
+}
+
+/* Preview Countdown Badge for Teacher */
+.ta-preview-frame-wrapper .preview-countdown-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.ta-preview-frame-wrapper .preview-countdown-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    animation: taCountdownScalePulse 1s ease;
+    text-shadow: 0 0 20px rgba(245, 158, 11, 0.8);
+}
+
+@keyframes taCountdownScalePulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Capture Flash Overlay for Teacher */
+.ta-preview-frame-wrapper .capture-flash-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    border-radius: 0.75rem;
+    animation: taFlashPreview 0.5s ease-out;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes taFlashPreview {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Detection Badge with Pulse for Teacher */
+.ta-detection-badge.pulse-animation {
+    animation: taBadgePulse 2s ease-in-out infinite;
+}
+
+@keyframes taBadgePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Capturing Badge for Teacher */
+.ta-snapshot-panel .capturing-badge {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.9), rgba(249, 115, 22, 0.9));
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    animation: taCaptureBadgePulse 1s ease-in-out infinite;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+}
+
+@keyframes taCaptureBadgePulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
 }
 
 /* Buttons */
@@ -692,12 +875,13 @@
     position: absolute;
     bottom: 0.75rem;
     left: 0.75rem;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    font-size: 0.78rem;
+    background: rgba(0, 0, 0, 0.75);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
     font-weight: 600;
     padding: 0.3rem 0.75rem;
     border-radius: 0.5rem;
+    -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
 }
 
