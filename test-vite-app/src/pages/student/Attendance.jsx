@@ -427,23 +427,44 @@ function Attendance() {
                                 </div>
 
                                 {/* Live Snapshot Preview Panel */}
-                                <div className="snapshot-preview-container">
+                                <div className={`snapshot-preview-container ${faceDetected ? 'face-detected' : ''} ${isCapturing ? 'capturing' : ''}`}>
+                                    <div className="live-indicator">
+                                        <span className="live-dot"></span>
+                                        <span className="live-text">LIVE</span>
+                                    </div>
                                     <h4>📷 Live Preview</h4>
                                     <p className="preview-hint">This is what will be captured as your attendance photo</p>
-                                    {liveSnapshot ? (
-                                        <img src={liveSnapshot} alt="Live preview" className="snapshot-preview" />
-                                    ) : (
-                                        <div className="snapshot-placeholder">
-                                            <FaCamera size={32} />
-                                            <p>Preview loading...</p>
-                                        </div>
-                                    )}
+                                    <div className="preview-frame-wrapper">
+                                        {liveSnapshot ? (
+                                            <>
+                                                <img src={liveSnapshot} alt="Live preview" className="snapshot-preview" />
+                                                {isCapturing && countdown && (
+                                                    <div className="preview-countdown-badge">
+                                                        <span className="preview-countdown-number">{countdown}</span>
+                                                    </div>
+                                                )}
+                                                {isCapturing && !countdown && (
+                                                    <div className="capture-flash-overlay"></div>
+                                                )}
+                                            </>
+                                        ) : (
+                                            <div className="snapshot-placeholder">
+                                                <FaCamera size={32} />
+                                                <p>Preview loading...</p>
+                                            </div>
+                                        )}
+                                    </div>
                                     <div className="preview-info">
                                         <small>✓ Auto-updating every 0.5s</small>
                                     </div>
-                                    {faceDetected && (
-                                        <div className="detection-badge">
+                                    {faceDetected && !isCapturing && (
+                                        <div className="detection-badge pulse-animation">
                                             <FaCheckCircle size={14} /> Face detected — ready to capture!
+                                        </div>
+                                    )}
+                                    {isCapturing && (
+                                        <div className="capturing-badge">
+                                            <FaCamera size={14} /> Capturing in progress...
                                         </div>
                                     )}
                                 </div>
