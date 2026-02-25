@@ -398,6 +398,186 @@
     font-size: 0.8rem;
 }
 
+/* LIVE Indicator */
+.live-indicator {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(220, 38, 38, 0.95);
+    padding: 0.4rem 0.8rem;
+    border-radius: 2rem;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.5);
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    animation: livePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.2);
+    }
+}
+
+.live-text {
+    color: white;
+    font-weight: bold;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+/* Preview Frame Wrapper */
+.preview-frame-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Snapshot Preview Container States */
+.snapshot-preview-container {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.snapshot-preview-container.face-detected {
+    animation: glowGreen 2s ease-in-out infinite;
+}
+
+.snapshot-preview-container.capturing {
+    animation: glowBlue 1s ease-in-out;
+}
+
+@keyframes glowGreen {
+    0%, 100% {
+        box-shadow: 0 0 0 rgba(76, 175, 80, 0);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+    }
+}
+
+@keyframes glowBlue {
+    0%, 100% {
+        box-shadow: 0 0 0 rgba(102, 126, 234, 0);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(102, 126, 234, 0.8);
+    }
+}
+
+/* Preview Countdown Badge */
+.preview-countdown-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.preview-countdown-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    animation: countdownScalePulse 1s ease;
+    text-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
+}
+
+@keyframes countdownScalePulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Capture Flash Overlay */
+.capture-flash-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    border-radius: 0.75rem;
+    animation: flashPreview 0.5s ease-out;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes flashPreview {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Detection Badge with Pulse */
+.detection-badge.pulse-animation {
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Capturing Badge */
+.capturing-badge {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(59, 130, 246, 0.9));
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    animation: captureBadgePulse 1s ease-in-out infinite;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+@keyframes captureBadgePulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
 /* Preview Comparison Container */
 .preview-comparison-container {
     text-align: center;
