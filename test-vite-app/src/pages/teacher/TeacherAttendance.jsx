@@ -349,21 +349,42 @@ function TeacherAttendance() {
                                         </div>
 
                                         {/* Live Snapshot Panel */}
-                                        <div className="ta-snapshot-panel">
+                                        <div className={`ta-snapshot-panel ${faceDetected ? 'face-detected' : ''} ${isCapturing ? 'capturing' : ''}`}>
+                                            <div className="live-indicator">
+                                                <span className="live-dot"></span>
+                                                <span className="live-text">LIVE</span>
+                                            </div>
                                             <h4>📷 Live Preview</h4>
                                             <p className="ta-preview-hint">This exact photo will be saved with your attendance record</p>
-                                            {liveSnapshot ? (
-                                                <img src={liveSnapshot} alt="Live preview" className="ta-snapshot-img" />
-                                            ) : (
-                                                <div className="ta-snapshot-placeholder">
-                                                    <FaCamera size={32} />
-                                                    <p>Loading preview...</p>
+                                            <div className="ta-preview-frame-wrapper">
+                                                {liveSnapshot ? (
+                                                    <>
+                                                        <img src={liveSnapshot} alt="Live preview" className="ta-snapshot-img" />
+                                                        {isCapturing && countdown && (
+                                                            <div className="preview-countdown-badge">
+                                                                <span className="preview-countdown-number">{countdown}</span>
+                                                            </div>
+                                                        )}
+                                                        {isCapturing && !countdown && (
+                                                            <div className="capture-flash-overlay"></div>
+                                                        )}
+                                                    </>
+                                                ) : (
+                                                    <div className="ta-snapshot-placeholder">
+                                                        <FaCamera size={32} />
+                                                        <p>Loading preview...</p>
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div className="ta-preview-info"><small>✓ Updates every 0.5s</small></div>
+                                            {faceDetected && !isCapturing && (
+                                                <div className="ta-detection-badge pulse-animation">
+                                                    <FaCheckCircle size={14} /> Ready to capture!
                                                 </div>
                                             )}
-                                            <div className="ta-preview-info"><small>✓ Updates every 0.5s</small></div>
-                                            {faceDetected && (
-                                                <div className="ta-detection-badge">
-                                                    <FaCheckCircle size={14} /> Ready to capture!
+                                            {isCapturing && (
+                                                <div className="capturing-badge">
+                                                    <FaCamera size={14} /> Capturing in progress...
                                                 </div>
                                             )}
                                         </div>
