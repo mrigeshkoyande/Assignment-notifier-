@@ -1,6 +1,7 @@
 {
   "name": "notification-app",
   "version": "1.0.0",
+  "description": "Assignment Notifier - A modern full-stack educational ecosystem for classroom management",
   "private": true,
   "scripts": {
     "dev": "vite",
