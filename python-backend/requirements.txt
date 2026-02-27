@@ -1,5 +1,5 @@
 # Assignment Notifier — Python Backend Dependencies
-# Last updated: February 2026
+# Last updated: February 28, 2026
 # Python 3.8+ required
 # Install with: pip install -r requirements.txt
 
