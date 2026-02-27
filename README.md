@@ -19,7 +19,7 @@
   <img src="https://img.shields.io/github/issues/mrigeshkoyande/Assignment-notifier-?style=flat-square" alt="Issues"/>
   <img src="https://img.shields.io/github/issues-pr/mrigeshkoyande/Assignment-notifier-?style=flat-square" alt="Pull Requests"/>
   <img src="https://img.shields.io/github/last-commit/mrigeshkoyande/Assignment-notifier-?style=flat-square" alt="Last Commit"/>
-  <img src="https://img.shields.io/badge/Last%20Updated-February%202026-orange.svg?style=flat-square" alt="Last Updated"/>
+  <img src="https://img.shields.io/badge/Last%20Updated-February%2027%2C%202026-orange.svg?style=flat-square" alt="Last Updated"/>
   <img src="https://img.shields.io/badge/Status-Active%20Development-brightgreen.svg?style=flat-square" alt="Status"/>
 </p>
 
