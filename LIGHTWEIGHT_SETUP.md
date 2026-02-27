@@ -1,6 +1,6 @@
 # Lightweight Attendance System — Setup Guide
 
-> **Version:** 2.1 | **Last Updated:** February 23, 2026  
+> **Version:** 2.1 | **Last Updated:** February 28, 2026  
 > Part of the [Assignment Notifier Platform](https://github.com/mrigeshkoyande/Assignment-notifier-)
 
 ## What Changed ✨
