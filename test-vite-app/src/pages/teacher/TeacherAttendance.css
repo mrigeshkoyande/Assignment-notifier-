@@ -1151,6 +1151,244 @@
     }
 }
 
+/* ==================== ENHANCED TRACKING FEATURES ==================== */
+
+/* Tracking Mode Selector */
+.tracking-mode-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(249, 115, 22, 0.1));
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.mode-label {
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 0.95rem;
+}
+
+.mode-buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.mode-btn {
+    padding: 0.6rem 1.2rem;
+    border: 2px solid rgba(245, 158, 11, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mode-btn:hover {
+    background: rgba(245, 158, 11, 0.15);
+    border-color: rgba(245, 158, 11, 0.5);
+    transform: translateY(-2px);
+}
+
+.mode-btn.active {
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+}
+
+/* Tracking Info Panel */
+.tracking-info-panel {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.tracking-info-panel h4 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.3rem;
+    color: var(--text-main);
+    text-align: center;
+}
+
+/* Tracking Metrics Grid */
+.tracking-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.metric-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.5), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.metric-card:hover::before {
+    opacity: 1;
+}
+
+.metric-card.active {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.3);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+.metric-card.active::before {
+    background: linear-gradient(90deg, transparent, #10b981, transparent);
+    opacity: 1;
+}
+
+.metric-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.metric-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.metric-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.metric-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Quality Status Colors */
+.metric-value.quality-excellent {
+    color: #10b981;
+}
+
+.metric-value.quality-good {
+    color: #3b82f6;
+}
+
+.metric-value.quality-fair {
+    color: #f59e0b;
+}
+
+.metric-value.quality-poor {
+    color: #ef4444;
+}
+
+.metric-value.quality-no-detection {
+    color: var(--text-muted);
+}
+
+.metric-value.quality-manual-mode {
+    color: #8b5cf6;
+}
+
+/* Confidence Bar */
+.confidence-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.confidence-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 0 10px currentColor;
+}
+
+/* Tracking Tips */
+.tracking-tips {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: rgba(245, 158, 11, 0.05);
+    border-radius: 0.75rem;
+    border: 1px solid rgba(245, 158, 11, 0.15);
+}
+
+.tip-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.tip-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* Responsive adjustments for tracking panel */
+@media (max-width: 1024px) {
+    .tracking-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .tracking-mode-selector {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .mode-buttons {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .mode-btn {
+        width: 100%;
+    }
+    
+    .tracking-metrics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
 /* ─── Print styles ───────────────────────────────────────────────────────────── */
 
 @media print {
