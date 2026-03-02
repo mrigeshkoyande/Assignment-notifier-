@@ -622,6 +622,22 @@ Ensure all environment variables are set in your hosting platform:
 
 We **love** contributions from the community! Every contribution, no matter how small, makes a difference. Whether you're fixing typos, adding features, or improving documentation – you're helping make education better for everyone! 🎓
 
+### 📖 **[Read Our Complete Contributing Guide](./CONTRIBUTING.md)**
+
+For comprehensive guidelines on how to contribute, including:
+- ✅ Development setup instructions
+- 📝 Commit message guidelines
+- 🔄 Pull request process
+- 💻 Coding standards (JavaScript, Python, CSS)
+- 🧪 Testing practices
+- 🐛 Bug reporting
+- 💡 Feature request process
+- 🤝 Code of Conduct
+
+**[👉 Start Contributing →](./CONTRIBUTING.md)**
+
+---
+
 ### 🌟 Why Contribute?
 
 - 📈 **Build Your Portfolio** - Showcase real-world project experience
