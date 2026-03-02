@@ -36,6 +36,15 @@ function TeacherAttendance() {
     const [countdown, setCountdown] = useState(null);
     const [successPhoto, setSuccessPhoto] = useState(null);
     const snapshotIntervalRef = useRef(null);
+    
+    // Enhanced tracking states
+    const [trackingMode, setTrackingMode] = useState("auto"); // auto, manual
+    const [detectionConfidence, setDetectionConfidence] = useState(0);
+    const [frameRate, setFrameRate] = useState(0);
+    const [trackingQuality, setTrackingQuality] = useState("Good");
+    const [detectionCount, setDetectionCount] = useState(0);
+    const [lastDetectionTime, setLastDetectionTime] = useState(null);
+    const frameTimeRef = useRef(Date.now());
 
     useEffect(() => {
         const loadModel = async () => {
@@ -114,15 +123,49 @@ function TeacherAttendance() {
         if (!modelsLoaded) return;
         const loop = setInterval(async () => {
             if (!videoRef.current || !canvasRef.current) return;
+            
+            // Calculate frame rate
+            const now = Date.now();
+            const timeDiff = now - frameTimeRef.current;
+            if (timeDiff > 0) {
+                setFrameRate(Math.round(1000 / timeDiff));
+            }
+            frameTimeRef.current = now;
+            
             try {
                 if (detectionModel && videoRef.current.videoWidth > 0) {
                     const predictions = await detectionModel.detect(videoRef.current);
-                    const found = predictions.some((p) => p.class === "person");
-                    if (found) { setFaceDetected(true); drawDetections(predictions); }
-                    else { setFaceDetected(false); clearCanvas(); }
+                    const personPredictions = predictions.filter((p) => p.class === "person");
+                    const found = personPredictions.length > 0;
+                    
+                    if (found) { 
+                        setFaceDetected(true); 
+                        drawDetections(predictions);
+                        
+                        // Update tracking metrics
+                        const maxConfidence = Math.max(...personPredictions.map(p => p.score));
+                        setDetectionConfidence(Math.round(maxConfidence * 100));
+                        setDetectionCount(prev => prev + 1);
+                        setLastDetectionTime(new Date());
+                        
+                        // Calculate tracking quality
+                        if (maxConfidence > 0.8) setTrackingQuality("Excellent");
+                        else if (maxConfidence > 0.6) setTrackingQuality("Good");
+                        else if (maxConfidence > 0.4) setTrackingQuality("Fair");
+                        else setTrackingQuality("Poor");
+                    }
+                    else { 
+                        setFaceDetected(false); 
+                        clearCanvas(); 
+                        setDetectionConfidence(0);
+                        setTrackingQuality("No Detection");
+                    }
                 } else {
-                    if (videoRef.current.readyState === videoRef.current.HAVE_ENOUGH_DATA)
+                    if (videoRef.current.readyState === videoRef.current.HAVE_ENOUGH_DATA) {
                         setFaceDetected(true);
+                        setDetectionConfidence(100);
+                        setTrackingQuality("Manual Mode");
+                    }
                 }
             } catch (e) { console.warn("Detection:", e); }
         }, 300);
@@ -245,6 +288,12 @@ function TeacherAttendance() {
         setLiveSnapshot(null);
         setCapturedImage(null);
         setShowPreview(false);
+        
+        // Reset tracking metrics
+        setDetectionConfidence(0);
+        setFrameRate(0);
+        setTrackingQuality("Good");
+        setDetectionCount(0);
     };
 
     useEffect(() => {
@@ -319,6 +368,25 @@ function TeacherAttendance() {
                                         <p>📸 Look at the camera. The right panel shows a live preview — this is your attendance photo.</p>
                                     </div>
 
+                                    {/* Tracking Mode Selector */}
+                                    <div className="tracking-mode-selector">
+                                        <span className="mode-label">Tracking Mode:</span>
+                                        <div className="mode-buttons">
+                                            <button 
+                                                className={`mode-btn ${trackingMode === "auto" ? "active" : ""}`}
+                                                onClick={() => setTrackingMode("auto")}
+                                            >
+                                                🤖 Auto Detection
+                                            </button>
+                                            <button 
+                                                className={`mode-btn ${trackingMode === "manual" ? "active" : ""}`}
+                                                onClick={() => setTrackingMode("manual")}
+                                            >
+                                                👤 Manual Mode
+                                            </button>
+                                        </div>
+                                    </div>
+
                                     <div className="ta-camera-layout">
                                         {/* Camera Feed */}
                                         <div className="ta-video-wrap">
@@ -389,7 +457,99 @@ function TeacherAttendance() {
                                             )}
                                         </div>
                                     </div>
+                                    {/* Enhanced Tracking Information Panel */}
+                                    <div className="tracking-info-panel">
+                                        <h4>📊 Real-Time Tracking Analytics</h4>
+                                        
+                                        <div className="tracking-metrics-grid">
+                                            {/* Detection Status */}
+                                            <div className={`metric-card ${faceDetected ? 'active' : ''}`}>
+                                                <div className="metric-icon">
+                                                    {faceDetected ? '✅' : '⏳'}
+                                                </div>
+                                                <div className="metric-content">
+                                                    <span className="metric-label">Detection Status</span>
+                                                    <span className="metric-value">{faceDetected ? 'Person Detected' : 'Scanning...'}</span>
+                                                </div>
+                                            </div>
 
+                                            {/* Confidence Level */}
+                                            <div className="metric-card">
+                                                <div className="metric-icon">🎯</div>
+                                                <div className="metric-content">
+                                                    <span className="metric-label">Confidence</span>
+                                                    <span className="metric-value">{detectionConfidence}%</span>
+                                                </div>
+                                                <div className="confidence-bar">
+                                                    <div 
+                                                        className="confidence-fill" 
+                                                        style={{
+                                                            width: `${detectionConfidence}%`,
+                                                            backgroundColor: detectionConfidence > 70 ? '#10b981' : detectionConfidence > 40 ? '#f59e0b' : '#ef4444'
+                                                        }}
+                                                    ></div>
+                                                </div>
+                                            </div>
+
+                                            {/* Tracking Quality */}
+                                            <div className="metric-card">
+                                                <div className="metric-icon">⭐</div>
+                                                <div className="metric-content">
+                                                    <span className="metric-label">Tracking Quality</span>
+                                                    <span className={`metric-value quality-${trackingQuality.toLowerCase().replace(' ', '-')}`}>
+                                                        {trackingQuality}
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            {/* Frame Rate */}
+                                            <div className="metric-card">
+                                                <div className="metric-icon">📹</div>
+                                                <div className="metric-content">
+                                                    <span className="metric-label">Frame Rate</span>
+                                                    <span className="metric-value">{frameRate} FPS</span>
+                                                </div>
+                                            </div>
+
+                                            {/* Detection Count */}
+                                            <div className="metric-card">
+                                                <div className="metric-icon">🔢</div>
+                                                <div className="metric-content">
+                                                    <span className="metric-label">Detections</span>
+                                                    <span className="metric-value">{detectionCount}</span>
+                                                </div>
+                                            </div>
+
+                                            {/* GPS Status */}
+                                            <div className={`metric-card ${location ? 'active' : ''}`}>
+                                                <div className="metric-icon">
+                                                    <FaMapMarkerAlt />
+                                                </div>
+                                                <div className="metric-content">
+                                                    <span className="metric-label">GPS Location</span>
+                                                    <span className="metric-value">
+                                                        {location ? `${location.latitude.toFixed(4)}, ${location.longitude.toFixed(4)}` : 'Waiting...'}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* Additional Info */}
+                                        <div className="tracking-tips">
+                                            <div className="tip-item">
+                                                <span className="tip-icon">💡</span>
+                                                <span>Ensure good lighting for better detection accuracy</span>
+                                            </div>
+                                            <div className="tip-item">
+                                                <span className="tip-icon">👤</span>
+                                                <span>Position your face within the frame guides</span>
+                                            </div>
+                                            <div className="tip-item">
+                                                <span className="tip-icon">🎯</span>
+                                                <span>Higher confidence = better photo quality</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div className="ta-btn-group">
                                         <button
                                             className="ta-btn-primary"
