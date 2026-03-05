@@ -1455,7 +1455,31 @@ Feel free to open an issue or reach out at **mrigeshkoyande@gmail.com**
 
 ---
 
-## 🐛 Known Issues & Troubleshooting
+## � Getting Help
+
+### Report Bugs
+Found a bug? Help us fix it:
+- Visit [Issues](https://github.com/mrigeshkoyande/Assignment-notifier-/issues)
+- Check if the issue already exists
+- If not, create a new issue with:
+  - Clear title and description
+  - Steps to reproduce
+  - Expected vs actual behavior
+  - Screenshots (if applicable)
+  - Your environment details
+
+### Ask Questions
+- **GitHub Discussions**: Ask implementation questions
+- **Issues**: Report problems or suggest features
+- **Email**: mrigeshkoyande@gmail.com for direct help
+- **Documentation**: Check [CONTRIBUTING.md](CONTRIBUTING.md) for more details
+
+### Share Feedback
+We'd love to hear your suggestions! Open a discussion or issue to share your ideas.
+
+---
+
+## �🐛 Known Issues & Troubleshooting
 
 ### Common Issues
 
