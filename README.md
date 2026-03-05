@@ -1614,6 +1614,53 @@ Contributors are recognized in multiple ways:
 
 ---
 
+## 💬 Community & Communication
+
+### Connect With Us
+
+We believe in building a community of developers working together. Here are ways to stay connected:
+
+**GitHub Discussions** 💭
+- Ask questions about features and implementation
+- Share ideas and suggestions
+- Collaborate on solutions
+- [Join the discussion](https://github.com/mrigeshkoyande/Assignment-notifier-/discussions)
+
+**Issues Tracker** 🐛
+- Report bugs and problems
+- Request new features
+- See what others are working on
+- [Browse issues](https://github.com/mrigeshkoyande/Assignment-notifier-/issues)
+
+**Pull Requests** 🔄
+- Review ongoing contributions
+- Provide feedback and suggestions
+- See who's contributing
+- [View pull requests](https://github.com/mrigeshkoyande/Assignment-notifier-/pulls)
+
+**Email** 📧
+- Direct communication: mrigeshkoyande@gmail.com
+- Questions, feedback, or partnership inquiries
+- Private discussions
+
+**Social Media** 📱
+- Stay updated on releases and announcements
+- Share your contribution stories
+- Follow [Mrigesh Koyande on GitHub](https://github.com/mrigeshkoyande)
+
+### Communication Guidelines
+
+We follow a **Code of Conduct** to create an inclusive, respectful community:
+- ✨ Be respectful and kind
+- 🤝 Be inclusive and welcoming
+- 💡 Provide constructive feedback
+- 🚀 Celebrate contributions
+- 🛡️ Report inappropriate behavior
+
+See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for full details.
+
+---
+
 ### Share Feedback
 We'd love to hear your suggestions! Open a discussion or issue to share your ideas.
 
