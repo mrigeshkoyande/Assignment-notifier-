@@ -1530,6 +1530,18 @@ Special thanks to:
 - **Open Source Contributors** - For making this possible
 - **Educational Community** - For feedback and suggestions
 
+### 🎖️ Contributors
+
+This project thrives thanks to amazing contributors who share their time and expertise!
+
+**Want to see your name here?** Start contributing today:
+- Fix bugs and improve code quality
+- Add new features and enhancements
+- Improve documentation
+- Share ideas and feedback
+
+Every contribution, big or small, makes a difference. Check out [CONTRIBUTING.md](CONTRIBUTING.md) to get started!
+
 ---
 
 <div align="center">
