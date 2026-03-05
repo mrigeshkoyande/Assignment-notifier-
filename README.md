@@ -1479,6 +1479,146 @@ We'd love to hear your suggestions! Open a discussion or issue to share your ide
 
 ---
 
+## 🎯 Good First Issues for New Contributors
+
+Looking to get started? Here are some great entry points:
+
+| Level | Task | Description | Skills |
+|-------|------|-------------|--------|
+| **Beginner** | 🏷️ Fix typos | Help improve documentation and comments | Documentation |
+| **Beginner** | 📚 Improve README sections | Enhance clarity and examples | Writing |
+| **Beginner** | ✨ Add code comments | Document complex functions | Code Reading |
+| **Intermediate** | 🐛 Bug fixes from issues | Pick open bugs and fix them | Debugging |
+| **Intermediate** | 🎨 UI/UX improvements | Enhance user interface components | Frontend |
+| **Intermediate** | 🧪 Write unit tests | Add test coverage | Testing |
+| **Advanced** | 🚀 Feature implementation | Help build new features | Full Stack |
+| **Advanced** | ♿ Accessibility improvements | Make app WCAG compliant | Accessibility |
+
+**Start here**: Check [issues labeled "good-first-issue"](https://github.com/mrigeshkoyande/Assignment-notifier-/labels/good-first-issue)
+
+---
+
+## 🛠️ Development Workflow
+
+### Local Development Setup
+
+```bash
+# 1. Clone and navigate
+git clone https://github.com/YOUR_USERNAME/Assignment-notifier-.git
+cd Assignment-notifier-
+
+# 2. Install frontend dependencies
+cd notification-app
+npm install
+
+# 3. Install backend dependencies
+cd ../python-backend
+pip install -r requirements.txt
+
+# 4. Start both services
+# Terminal 1: Frontend
+cd notification-app && npm run dev
+
+# Terminal 2: Backend
+cd python-backend && python server.py
+```
+
+### Before You Submit
+
+- [ ] Code follows project style guide
+- [ ] All tests pass locally
+- [ ] No console errors or warnings
+- [ ] Changes are documented
+- [ ] Commit messages are clear
+- [ ] No unnecessary files added
+- [ ] Works on your machine ✅
+
+---
+
+## 🧪 Testing Guidelines
+
+We encourage thorough testing! Here's how to contribute tests:
+
+### Frontend Testing (React/Vite)
+```bash
+cd notification-app
+npm test          # Run tests
+npm run test:ui   # Run with UI
+npm run cov       # Generate coverage report
+```
+
+### Backend Testing (Python)
+```bash
+cd python-backend
+python -m pytest              # Run all tests
+python -m pytest --cov        # With coverage
+python -m pytest -v           # Verbose output
+```
+
+### What to Test
+- ✅ New features (happy path + edge cases)
+- ✅ Bug fixes (ensure bug is fixed)
+- ✅ Existing functionality (regression tests)
+- ✅ API endpoints (request/response validation)
+- ✅ Error handling (user feedback)
+
+---
+
+## 👀 Code Review Expectations
+
+### We Look For:
+✅ **Code Quality**
+- Clean, readable code
+- Follows project conventions
+- Proper error handling
+- No hardcoded values or sensitive data
+
+✅ **Testing**
+- Tests for new features
+- No failing tests
+- Adequate coverage for critical paths
+
+✅ **Documentation**
+- Code comments for complex logic
+- Updated README/docs
+- Clear commit messages
+
+✅ **Performance**
+- No performance regressions
+- Optimized queries/API calls
+- Efficient algorithms
+
+### Review Timeline
+- **First Review**: Within 48 hours
+- **Feedback**: We'll provide constructive feedback
+- **Changes**: Make requested adjustments
+- **Approval**: Merge when ready!
+
+---
+
+## 🏆 Recognition & Credits
+
+### Hall of Fame 🌟
+Contributors are recognized in multiple ways:
+- 👤 Listed in [CONTRIBUTORS.md](CONTRIBUTORS.md)
+- 📍 Mentioned in release notes
+- 🎖️ Recognition badges on profile
+- 🎯 Featured in project announcements
+
+### Contribution Rewards
+- Learning experience with modern tech stack
+- Portfolio building opportunities
+- Community recognition
+- Networking with developers
+- Resume/LinkedIn boost
+
+---
+
+### Share Feedback
+We'd love to hear your suggestions! Open a discussion or issue to share your ideas.
+
+---
+
 ## �🐛 Known Issues & Troubleshooting
 
 ### Common Issues
