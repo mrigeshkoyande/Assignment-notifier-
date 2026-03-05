@@ -1479,6 +1479,69 @@ We'd love to hear your suggestions! Open a discussion or issue to share your ide
 
 ---
 
+## ⚡ Quick Wins — 5-Minute Contributions!
+
+Don't have much time? These quick wins take **5-15 minutes** and make a real impact:
+
+### 📝 Documentation Fixes
+```
+- Fix typos in README or code comments
+- Improve unclear explanations
+- Add missing code examples
+- Update broken links
+- Enhance formatting
+```
+**Impact**: Helps all users understand the project better  
+**Skills Needed**: Reading, attention to detail  
+**Time**: 5-10 minutes per item
+
+### 🎨 UI Polish
+```
+- Fix CSS spacing or alignment
+- Improve button hover states
+- Enhance color consistency
+- Refactor repetitive styles
+- Fix responsive issues
+```
+**Impact**: Better user experience for everyone  
+**Skills Needed**: Basic CSS knowledge  
+**Time**: 10-15 minutes per item
+
+### 🧪 Add a Simple Test
+```
+- Write a test for an untested function
+- Test edge cases
+- Add test documentation
+- Improve test coverage
+```
+**Impact**: Catches bugs before users do  
+**Skills Needed**: JavaScript/Python testing basics  
+**Time**: 10-20 minutes per test
+
+### 🐛 Report a Bug
+```
+- Found an issue? Report it!
+- Include steps to reproduce
+- Add screenshots
+- Test on different browsers
+```
+**Impact**: Helps us prioritize and fix issues  
+**Skills Needed**: Observation and clarity  
+**Time**: 5 minutes
+
+### 💡 Suggest an Enhancement
+```
+- Have an idea for improvement?
+- Share it in discussions
+- Add use cases
+- Suggest implementation
+```
+**Impact**: Shapes the future of the project  
+**Skills Needed**: Creative thinking  
+**Time**: 5-10 minutes
+
+---
+
 ## 🎯 Good First Issues for New Contributors
 
 Looking to get started? Here are some great entry points:
