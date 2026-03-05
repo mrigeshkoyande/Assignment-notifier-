@@ -1444,6 +1444,28 @@ Contributions are **always welcome**! Whether you're fixing bugs, adding feature
 - 🚀 **Performance**: Optimize and speed up features
 - ♿ **Accessibility**: Make the app more accessible
 
+### 🎯 Priority Contributions Needed (March 2026)
+
+**High Impact** 🚀
+- [ ] **Test Coverage** - Add unit/integration tests (50%+ coverage needed)
+- [ ] **Bug Fixes** - [View open bugs](https://github.com/mrigeshkoyande/Assignment-notifier-/issues?q=label%3Abug)
+- [ ] **Performance Optimization** - Faster page loads, bundle size reduction
+- [ ] **Accessibility** - WCAG 2.1 AA compliance audit and fixes
+
+**Medium Impact** 💡
+- [ ] **Code Quality** - Refactor and improve code readability
+- [ ] **Documentation** - API docs, setup guides, troubleshooting
+- [ ] **UI Improvements** - Polish components, improve mobile experience
+- [ ] **Error Messages** - Better user feedback and error handling
+
+**Community Impact** 🌟
+- [ ] **Translations** - Add support for Spanish, French, Hindi
+- [ ] **Examples** - Create code examples and tutorials
+- [ ] **Issue Triage** - Help organize and label issues
+- [ ] **Community Support** - Answer questions in discussions
+
+**[View Detailed Contributing Issues →](https://github.com/mrigeshkoyande/Assignment-notifier-/issues?q=label%3A%22help+wanted%22)**
+
 ### Review Process
 
 1. We'll review your PR within 48-72 hours
