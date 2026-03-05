@@ -1498,7 +1498,82 @@ Looking to get started? Here are some great entry points:
 
 ---
 
-## 🛠️ Development Workflow
+## � Contribute by Technology
+
+### Frontend (React/Vite)
+**📁 Location**: `notification-app/`, `test-vite-app/`
+
+**What we need**:
+- 🎨 UI/UX improvements and animations
+- 🔧 Component optimization
+- 🧪 Unit and integration tests
+- ♿ Accessibility enhancements (WCAG compliance)
+- 📱 Mobile responsive improvements
+- 🚀 Performance optimizations
+
+**Tech Stack**: React 19, Vite, TailwindCSS, Firebase
+
+**Skills**: JavaScript, React, CSS, Testing Libraries
+
+**Starter Issues**: Check `frontend`, `ui-ux`, `accessibility` labels
+
+---
+
+### Backend (Python/Flask)
+**📁 Location**: `python-backend/`
+
+**What we need**:
+- 🐛 Bug fixes and error handling
+- 🔐 Security improvements
+- 📊 API optimization
+- 🧪 Unit tests and integration tests
+- 📈 Performance improvements
+- 📚 API documentation
+
+**Tech Stack**: Python 3.8+, Flask, Firebase Admin SDK
+
+**Skills**: Python, REST APIs, Database design, Security
+
+**Starter Issues**: Check `backend`, `api`, `security` labels
+
+---
+
+### Machine Learning (TensorFlow.js/Face Detection)
+**📁 Location**: `test-vite-app/src/` (AI components)
+
+**What we need**:
+- 🤖 Model optimization
+- 🎯 Accuracy improvements
+- ⚡ Performance enhancement
+- 🧪 Model testing and validation
+- 📊 Model training data improvements
+
+**Tech Stack**: TensorFlow.js, COCO-SSD, JavaScript
+
+**Skills**: ML/AI, JavaScript, Model optimization
+
+**Starter Issues**: Check `ai`, `ml-model`, `tensorflow` labels
+
+---
+
+### Documentation & Content
+**📁 Location**: Root files, README, guides
+
+**What we need**:
+- 📖 API documentation
+- 🎓 Tutorials and guides
+- 🔍 SEO improvements
+- 🌐 Internationalization (i18n)
+- 📸 Screenshots and diagrams
+- 🧑‍💻 Code examples
+
+**Skills**: Technical writing, Markdown, Diagramming
+
+**Starter Issues**: Check `documentation`, `tutorial`, `example` labels
+
+---
+
+## �🛠️ Development Workflow
 
 ### Local Development Setup
 
