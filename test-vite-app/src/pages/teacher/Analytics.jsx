@@ -130,17 +130,20 @@ function Analytics() {
             </div>
 
             <div className="stats-grid">
-                {stats.map((stat, index) => (
-                    <div key={index} className="stat-card glass-panel">
-                        <div className="stat-icon" style={{ backgroundColor: `${stat.color}20` }}>
-                            {FaUsers && <stat.icon size={32} style={{ color: stat.color }} />}
+                {stats.map((stat, index) => {
+                    const IconComponent = stat.icon;
+                    return (
+                        <div key={index} className="stat-card glass-panel">
+                            <div className="stat-icon" style={{ backgroundColor: `${stat.color}20` }}>
+                                <IconComponent size={32} style={{ color: stat.color }} />
+                            </div>
+                            <div className="stat-content">
+                                <p className="stat-label">{stat.label}</p>
+                                <h3 className="stat-value">{stat.value}</h3>
+                            </div>
                         </div>
-                        <div className="stat-content">
-                            <p className="stat-label">{stat.label}</p>
-                            <h3 className="stat-value">{stat.value}</h3>
-                        </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
 
             <div className="charts-grid">
