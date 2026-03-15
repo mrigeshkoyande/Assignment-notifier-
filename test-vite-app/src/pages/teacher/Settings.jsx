@@ -6,9 +6,9 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { db, storage } from "../../services/firebase.config";
-import { doc, updateDoc, deleteDoc } from "firebase/firestore";
+import { doc, updateDoc, deleteDoc, getDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { FaUser, FaEnvelope, FaPhone, FaCamera, FaTrash, FaSave, FaTimes } from "react-icons/fa";
+import { FaUser, FaEnvelope, FaPhone, FaCamera, FaTrash, FaSave, FaTimes, FaPlus, FaMinus, FaPhoneAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./Settings.css";
 
@@ -28,6 +28,12 @@ function Settings() {
     const [message, setMessage] = useState({ type: "", text: "" });
     const [showDeleteModal, setShowDeleteModal] = useState(false);
 
+    // Emergency contacts state
+    const EMPTY_CONTACT = { name: "", phone: "" };
+    const [emergencyContacts, setEmergencyContacts] = useState([{ ...EMPTY_CONTACT }]);
+    const [ecLoading, setEcLoading] = useState(false);
+    const [ecMessage, setEcMessage] = useState({ type: "", text: "" });
+
     useEffect(() => {
         if (currentUser) {
             // Load existing user data
@@ -37,6 +43,13 @@ function Settings() {
                 photoURL: currentUser.photoURL || ""
             });
             setPhotoPreview(currentUser.photoURL || "");
+            // Load emergency contacts from Firestore
+            const userRef = doc(db, "users", currentUser.uid);
+            getDoc(userRef).then((snap) => {
+                if (snap.exists() && snap.data().emergencyContacts?.length) {
+                    setEmergencyContacts(snap.data().emergencyContacts);
+                }
+            });
         }
     }, [currentUser]);
 
@@ -127,6 +140,53 @@ function Settings() {
             setLoading(false);
             setShowDeleteModal(false);
         }
+    };
+
+    // Emergency contacts helpers
+    const updateContact = (idx, field, value) => {
+        setEmergencyContacts((prev) => {
+            const updated = [...prev];
+            updated[idx] = { ...updated[idx], [field]: value };
+            return updated;
+        });
+    };
+
+    const addContact = () => {
+        if (emergencyContacts.length < 3)
+            setEmergencyContacts((prev) => [...prev, { ...EMPTY_CONTACT }]);
+    };
+
+    const removeContact = (idx) => {
+        setEmergencyContacts((prev) => prev.filter((_, i) => i !== idx));
+    };
+
+    const saveEmergencyContacts = async () => {
+        const valid = emergencyContacts.filter((c) => c.name.trim() && c.phone.trim());
+        if (valid.length === 0) {
+            setEcMessage({ type: "error", text: "Please add at least one contact with name and phone." });
+            return;
+        }
+        setEcLoading(true);
+        setEcMessage({ type: "", text: "" });
+        try {
+            const userRef = doc(db, "users", currentUser.uid);
+            await updateDoc(userRef, { emergencyContacts: valid });
+            setEmergencyContacts(valid);
+            setEcMessage({ type: "success", text: "Emergency contacts saved!" });
+        } catch (err) {
+            console.error(err);
+            setEcMessage({ type: "error", text: "Failed to save contacts." });
+        } finally {
+            setEcLoading(false);
+        }
+    };
+
+    const callAll = () => {
+        const valid = emergencyContacts.filter((c) => c.phone.trim());
+        if (valid.length === 0) { alert("No phone numbers saved yet."); return; }
+        valid.forEach((c, i) => {
+            setTimeout(() => { window.open(`tel:${c.phone.trim()}`, "_blank"); }, i * 400);
+        });
     };
 
     return (
@@ -221,6 +281,57 @@ function Settings() {
                         disabled={loading}
                     >
                         <FaSave /> {loading ? "Saving..." : "Save Changes"}
+                    </button>
+                </div>
+            </div>
+
+            {/* Emergency Contacts Section */}
+            <div className="glass-panel settings-section emergency-contacts-section">
+                <h2>🚨 Emergency Contacts</h2>
+                <p>Add up to 3 contacts to call in case of emergency.</p>
+
+                {ecMessage.text && (
+                    <div className={`message-banner ${ecMessage.type}`}>{ecMessage.text}</div>
+                )}
+
+                <div className="ec-list">
+                    {emergencyContacts.map((c, idx) => (
+                        <div key={idx} className="ec-row">
+                            <span className="ec-num">{idx + 1}</span>
+                            <div className="ec-fields">
+                                <input
+                                    type="text"
+                                    placeholder="Contact Name"
+                                    value={c.name}
+                                    onChange={(e) => updateContact(idx, "name", e.target.value)}
+                                />
+                                <input
+                                    type="tel"
+                                    placeholder="Phone Number"
+                                    value={c.phone}
+                                    onChange={(e) => updateContact(idx, "phone", e.target.value)}
+                                />
+                            </div>
+                            {emergencyContacts.length > 1 && (
+                                <button className="btn-ec-remove" onClick={() => removeContact(idx)} title="Remove">
+                                    <FaMinus />
+                                </button>
+                            )}
+                        </div>
+                    ))}
+                </div>
+
+                <div className="ec-actions">
+                    {emergencyContacts.length < 3 && (
+                        <button className="btn-ec-add" onClick={addContact}>
+                            <FaPlus /> Add Contact
+                        </button>
+                    )}
+                    <button className="btn-ec-save" onClick={saveEmergencyContacts} disabled={ecLoading}>
+                        <FaSave /> {ecLoading ? "Saving…" : "Save Contacts"}
+                    </button>
+                    <button className="btn-ec-call" onClick={callAll} title="Call all emergency contacts">
+                        <FaPhoneAlt /> Call All
                     </button>
                 </div>
             </div>
