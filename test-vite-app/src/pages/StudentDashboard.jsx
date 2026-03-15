@@ -5,7 +5,7 @@
 
 import { useAuth } from "../context/AuthContext";
 import { useNavigate, Routes, Route } from "react-router-dom";
-import { FaCalendarCheck, FaComments, FaFileAlt, FaSignOutAlt, FaChartLine, FaBook, FaCog, FaMapMarkerAlt } from "react-icons/fa";
+import { FaCalendarCheck, FaComments, FaFileAlt, FaSignOutAlt, FaChartLine, FaBook, FaCog, FaMapMarkerAlt, FaExclamationCircle, FaGraduationCap } from "react-icons/fa";
 import useAttendance from "../hooks/useAttendance";
 import Attendance from "./student/Attendance";
 import Assignments from "./student/Assignments";
@@ -13,6 +13,8 @@ import MyClassrooms from "./student/MyClassrooms";
 import MyLectures from "./student/MyLectures";
 import Chat from "./student/Chat";
 import Settings from "./student/Settings";
+import Complaints from "./student/Complaints";
+import MyMarks from "./student/MyMarks";
 import "./StudentDashboard.css";
 
 /**
@@ -34,6 +36,8 @@ function StudentDashboard() {
         { id: "lectures", name: "Where is My Lecture?", icon: FaMapMarkerAlt, path: "/student-dashboard/lectures" },
         { id: "attendance", name: "Mark Attendance", icon: FaCalendarCheck, path: "/student-dashboard/attendance" },
         { id: "assignments", name: "Assignments", icon: FaFileAlt, path: "/student-dashboard/assignments" },
+        { id: "marks", name: "My Marks", icon: FaGraduationCap, path: "/student-dashboard/marks" },
+        { id: "complaints", name: "Complaints", icon: FaExclamationCircle, path: "/student-dashboard/complaints" },
         { id: "chat", name: "Mentor Chat", icon: FaComments, path: "/student-dashboard/chat" },
         { id: "settings", name: "Settings", icon: FaCog, path: "/student-dashboard/settings" }
     ];
@@ -128,6 +132,8 @@ function StudentDashboard() {
                     <Route path="/classrooms" element={<MyClassrooms />} />
                     <Route path="/attendance" element={<Attendance />} />
                     <Route path="/assignments" element={<Assignments />} />
+                    <Route path="/marks" element={<MyMarks />} />
+                    <Route path="/complaints" element={<Complaints />} />
                     <Route path="/chat" element={<Chat />} />
                     <Route path="/settings" element={<Settings />} />
                 </Routes>
