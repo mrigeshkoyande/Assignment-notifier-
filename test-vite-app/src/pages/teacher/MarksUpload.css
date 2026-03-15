@@ -1,0 +1,296 @@
+.marks-upload-container {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.mu-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--primary, #6c63ff);
+}
+
+.mu-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.mu-header p {
+    margin: 0;
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+.mu-panel {
+    padding: 1.5rem;
+    border-radius: 16px;
+}
+
+.mu-panel h2 {
+    margin: 0 0 1.4rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Steps */
+.mu-step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.step-badge {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--primary, #6c63ff);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.3rem;
+}
+
+.mu-step-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.mu-step-body.full-width {
+    width: 100%;
+}
+
+.mu-step-body label {
+    font-size: 0.88rem;
+    font-weight: 700;
+    opacity: 0.75;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.mu-step-body select {
+    padding: 0.65rem 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.07);
+    color: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+    max-width: 400px;
+}
+
+.mu-step-body select:focus {
+    outline: none;
+    border-color: var(--primary, #6c63ff);
+}
+
+.hint-text {
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+/* File drop */
+.file-drop-area {
+    max-width: 500px;
+}
+
+.file-drop-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 2rem 1.5rem;
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    cursor: pointer;
+    text-align: center;
+    transition: border-color 0.2s, background 0.2s;
+    font-size: 0.95rem;
+}
+
+.file-drop-label:hover {
+    border-color: var(--primary, #6c63ff);
+    background: rgba(108, 99, 255, 0.08);
+}
+
+.file-drop-label svg {
+    opacity: 0.5;
+}
+
+.file-drop-label .hint {
+    font-size: 0.78rem;
+    opacity: 0.45;
+}
+
+/* Preview table */
+.preview-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+    font-size: 0.88rem;
+    opacity: 0.75;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.preview-table-wrap {
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.preview-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.preview-table th {
+    padding: 0.6rem 0.9rem;
+    background: rgba(108, 99, 255, 0.2);
+    text-align: left;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.preview-table td {
+    padding: 0.5rem 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    white-space: nowrap;
+}
+
+.preview-table tr:hover td {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.more-rows {
+    text-align: center;
+    opacity: 0.5;
+    font-style: italic;
+}
+
+/* Actions */
+.mu-actions {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    padding-top: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.btn-upload-marks {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+}
+
+.btn-upload-marks:hover:not(:disabled) {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+.btn-upload-marks:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.btn-clear-file {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.65rem 1.2rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.btn-clear-file:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Message banner */
+.message-banner {
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.92rem;
+    font-weight: 500;
+}
+
+.message-banner.success {
+    background: rgba(76, 175, 80, 0.15);
+    color: #81c784;
+}
+
+.message-banner.error {
+    background: rgba(244, 67, 54, 0.15);
+    color: #e57373;
+}
+
+/* History */
+.mu-empty {
+    opacity: 0.5;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.history-icon {
+    color: #81c784;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.history-item strong {
+    display: block;
+    font-size: 0.95rem;
+}
+
+.history-meta {
+    display: block;
+    font-size: 0.78rem;
+    opacity: 0.55;
+    margin-top: 0.15rem;
+}
